@@ -1,9 +1,0 @@
-Lê Quang Minh 20215088
-Questions and answers:
-
-6.1:
-1. What happens if users choose “Cancel”?
-    If the users select "Cancel", the variable 'option' will receive value 2 before being compared with 'JOptionPane.YES_OPTION',
-    which has value 1. Because 2 does not equal to 1, the program will show the 'No' message on the screen as if users chose 'No'.
-
-2. How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do” and “I don’t”
