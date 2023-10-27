@@ -72,6 +72,7 @@ public class Cart {
     public float totalCost() {
         float total = 0;
         for (int i = 0; i < qtyOrdered; i++) {
+            System.out.println((i+1) + "\t" + itemsOrdered[i].getTitle() + "\t\t" + itemsOrdered[i].getCost());
             total += itemsOrdered[i].getCost();
         }
         return total;
