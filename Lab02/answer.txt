@@ -1,0 +1,39 @@
+Họ và tên: Lê Quang Minh
+MSSV: 20215088
+
+Questions and answers:
+10. Create Construction Method
+    * If you create a constructor method to build a DVD by title then create a constructor method to build
+a DVD by category. Does JAVA allow you to do this?
+    - No, JAVA won't allow me to do so. Because those two methods have the same name and the same parameter:
+        public DVD(String str) {
+            this.str = str;
+        }
+    JAVA can't distinguish between them.
+
+14. Working with method overloading
+    * Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd.
+    Compared to an array parameter. What do you prefer in this case?
+    - I prefer to use an array parameter. Because it's easier to understand and more convenient to use.
+    I don't have to write down all DVDs at once. Instead, I can pass just an array of DVD objects.
+
+15. Passing parameter
+    *  Is JAVA a Pass by Value or a Pass by Reference programming language?
+    - Technically, Java is always pass by value, because even though a variable might hold a reference to an object,
+    that object reference is a value that represents the object's location in memory. Object references are therefore passed by value.
+
+    * After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+    - Because the swap method only swaps the values of the two parameters, not the objects themselves. The objects
+    still have the same values as before.
+
+    * After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+    - Because the changeTitle method changes the title of the object that is passed as a parameter by method setTitle().
+
+    * Please write a swap() method that can correctly swap the two objects.
+    - I have written the swapTitle() method in the TestPassingParameter class:
+        public static void swapTitle(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+            String tmp = dvd1.getTitle();
+            dvd1.setTitle(dvd2.getTitle());
+            dvd2.setTitle(tmp);
+        }
+    Using setTitle() method to change the titles of two objects to affect the objects' values, not just the parameters.
