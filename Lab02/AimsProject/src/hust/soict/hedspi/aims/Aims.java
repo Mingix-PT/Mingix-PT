@@ -1,4 +1,8 @@
-package classes;
+package hust.soict.hedspi.aims.store;
+
+import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+
 public class Aims {
     public static void main(String[] args) {
         Cart anOrder = new Cart();
