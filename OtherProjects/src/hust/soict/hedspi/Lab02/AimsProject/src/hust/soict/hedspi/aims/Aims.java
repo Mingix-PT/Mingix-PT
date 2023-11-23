@@ -1,4 +1,4 @@
-package hust.soict.hedspi.aims.store;
+package hust.soict.hedspi.aims;
 
 import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
@@ -14,6 +14,10 @@ public class Aims {
         anOrder.addDigitalVideoDisc(dvd3);
 
         anOrder.removeDigitalVideoDisc(dvd3);
-        System.out.println("Total Cost is: " + anOrder.totalCost());
+        anOrder.printDVDList();
+        anOrder.searchDVD(1);
+        anOrder.searchDVD(3);
+        anOrder.searchDVD("One Lion Queen");
+        //System.out.println("Total Cost is: " + anOrder.totalCost());
     }
 }

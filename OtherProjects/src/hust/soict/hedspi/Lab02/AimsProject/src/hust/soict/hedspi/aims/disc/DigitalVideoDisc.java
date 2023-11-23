@@ -9,7 +9,7 @@ public class DigitalVideoDisc {
 
     private static int nbDigitalVideoDiscs = 0;
 
-    private static int id;
+    private int id;
 
     public String getTitle() {
         return title;
@@ -30,6 +30,10 @@ public class DigitalVideoDisc {
 
     public float getCost() {
         return cost;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setTitle(String title) {
@@ -67,5 +71,17 @@ public class DigitalVideoDisc {
         this.cost = cost;
         nbDigitalVideoDiscs++;
         id = nbDigitalVideoDiscs;
+    }
+
+    public boolean isMatch(String keyword) {
+        String keywordLowerCase = keyword.toLowerCase();
+        String titleLowerCase = title.toLowerCase();
+        String[] words = keywordLowerCase.split(" ");
+        for (String word : words) {
+            if (!titleLowerCase.contains(word)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
