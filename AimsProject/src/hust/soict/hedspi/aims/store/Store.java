@@ -1,8 +1,6 @@
 package hust.soict.hedspi.aims.store;
 
-import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
-
-import java.util.Objects;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
 public class Store {
     static final int MAX_ITEMS = 100;
