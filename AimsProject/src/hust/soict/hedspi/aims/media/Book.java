@@ -28,4 +28,8 @@ public class Book extends Media {
             System.out.println("The author is not in the list");
         }
     }
+
+    public String toString() {
+        return "Book - " + super.getTitle() + " - " + super.getCategory() + " - " + super.getCost() + "$";
+    }
 }
