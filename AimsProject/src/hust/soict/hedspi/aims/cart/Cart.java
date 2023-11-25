@@ -3,6 +3,8 @@ import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Cart {
     public static final int MAX_NUMBER_ORDERED = 20;
@@ -28,21 +30,21 @@ public class Cart {
         }
     }
 
-//    public void printDVDList() {
-//        if (qtyOrdered == 0) {
-//            System.out.println("The cart is empty");
-//            return;
-//        }
-//        System.out.println("\n***********************CART***********************");
-//        System.out.println("Ordered items:");
-//        for (int i = 0; i < qtyOrdered; i++) {
-//            System.out.println((i+1) + ". " + itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCategory() +
-//                    " - " + itemsOrdered[i].getDirector() + " - " + itemsOrdered[i].getLength() + " : " +
-//                    itemsOrdered[i].getCost() + "$");
-//        }
-//        System.out.printf("Total cost: %.2f\n", totalPrice());
-//        System.out.println("**************************************************");
-//    }
+    public void showCart() {
+        if (itemsOrdered.isEmpty()) {
+            System.out.println("The cart is empty");
+            return;
+        }
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered items:");
+        for (int i = 0; i < itemsOrdered.size(); i++) {
+            System.out.println((i+1) + ". "  + itemsOrdered.get(i).toString());
+        }
+        System.out.printf("Total cost: %.2f\n", totalPrice());
+        System.out.println("**************************************************");
+
+    }
+
 //
 //    public void searchDVD (int id) {
 //        for (int i = 0; i < qtyOrdered; i++) {
@@ -85,5 +87,9 @@ public class Cart {
             total += itemsOrdered.get(i).getCost();
         }
         return total;
+    }
+
+    public void sort(Comparator<Media> comparator) {
+        Collections.sort(itemsOrdered, comparator);
     }
 }

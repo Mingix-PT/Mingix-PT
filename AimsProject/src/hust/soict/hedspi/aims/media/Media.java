@@ -1,11 +1,12 @@
 package hust.soict.hedspi.aims.media;
 
+import java.util.Comparator;
+
 public abstract class Media {
     protected int id;
     protected String title;
     protected String category;
     protected float cost;
-
 
     public int getId() {
         return id;
@@ -38,7 +39,7 @@ public abstract class Media {
         this.cost = cost;
     }
 
-public boolean equals(Object obj) {
+    public boolean equals(Object obj) {
         if (obj instanceof Media) {
             Media media = (Media) obj;
             if (this.id == media.id) {
@@ -47,4 +48,7 @@ public boolean equals(Object obj) {
         }
         return false;
     }
+
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 }
