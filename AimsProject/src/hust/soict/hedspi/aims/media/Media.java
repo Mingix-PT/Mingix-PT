@@ -37,4 +37,14 @@ public abstract class Media {
         this.category = category;
         this.cost = cost;
     }
+
+public boolean equals(Object obj) {
+        if (obj instanceof Media) {
+            Media media = (Media) obj;
+            if (this.id == media.id) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
