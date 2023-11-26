@@ -1,20 +1,22 @@
 package hust.soict.hedspi.aims;
 
+import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 import hust.soict.hedspi.aims.menu.MenuAction;
 import hust.soict.hedspi.aims.menu.MenuDisplay;
 import hust.soict.hedspi.aims.media.*;
 import hust.soict.hedspi.aims.store.Store;
 import hust.soict.hedspi.aims.cart.Cart;
 
+import java.util.List;
 import java.util.Scanner;
 
 
 public class Aims {
     public static void main(String[] args) {
+        Store store = StoreMediaDatabase.getStoreMediaDatabase();
+        Cart cart = new Cart();
         int choice;
         while (true) {
-            Cart cart = new Cart();
-            Store store = new Store();
             MenuDisplay.showMenu();
             Scanner keyboard = new Scanner(System.in);
             choice = keyboard.nextInt();
@@ -31,7 +33,7 @@ public class Aims {
                     MenuAction.updateStore(store);
                     break;
                 case 3:
-                    MenuDisplay.cartMenu();
+                    MenuAction.cartMenuAction(cart);
                     break;
                 default:
                     MenuDisplay.clrscr();

@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.database;
 
 import hust.soict.hedspi.aims.media.*;
+import hust.soict.hedspi.aims.store.Store;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,8 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StoreMediaDatabase {
-    public List<Media> getStoreMediaDatabase() {
-        // Read file MediaDatabase.txt and store it in a String
+    public static Store getStoreMediaDatabase() {
         String data = new String();
         List<Media> mediaList = new ArrayList<Media>();
         String fileName = "hust/soict/hedspi/aims/database/MediaDatabase.txt";
@@ -46,10 +46,11 @@ public class StoreMediaDatabase {
                     case "CompactDisc" -> {
                         String title = input.nextLine();
                         String category = input.nextLine();
+                        String artist = input.nextLine();
                         String director = input.nextLine();
                         int length = Integer.parseInt(input.nextLine());
                         float cost = Float.parseFloat(input.nextLine());
-                        CompactDisc cd = new CompactDisc(title, category, director, length, cost);
+                        CompactDisc cd = new CompactDisc(title, category, artist, director, length, cost);
                         int numberTracks = Integer.parseInt(input.nextLine());
                         for (int i = 0; i < numberTracks; i++) {
                             String trackTitle = input.nextLine();
@@ -65,7 +66,11 @@ public class StoreMediaDatabase {
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
-        return mediaList;
+        Store store = new Store();
+        for (Media media : mediaList) {
+            store.addMedia(media);
+        }
+        return store;
     }
 
     public void updateStoreMediaDatabase(List<Media> mediaList) {

@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class MenuAction {
     public static void storeMenuAction (Cart cart, Store store) {
+        MenuDisplay.clrscr();
         int choice;
         while (true) {
             MenuDisplay.storeMenu();
@@ -23,6 +24,7 @@ public class MenuAction {
                 case 1:
                     MenuDisplay.clrscr();
                     System.out.println("Enter the title of the media you want to see: ");
+                    keyboard.nextLine();
                     String titleView = keyboard.nextLine();
                     MenuDisplay.clrscr();
                     System.out.println("Media details: ");
@@ -46,6 +48,7 @@ public class MenuAction {
                 case 2:
                     MenuDisplay.clrscr();
                     System.out.println("Enter the title of the media you want to add to cart: ");
+                    keyboard.nextLine();
                     String titleAdd = keyboard.nextLine();
                     MenuDisplay.clrscr();
                     int countMatchAdd = 0;
@@ -64,6 +67,7 @@ public class MenuAction {
                 case 3:
                     MenuDisplay.clrscr();
                     System.out.println("Enter the title of the media you want to play: ");
+                    keyboard.nextLine();
                     String titlePlay = keyboard.nextLine();
                     MenuDisplay.clrscr();
                     int countMatchPlay = 0;
@@ -92,10 +96,10 @@ public class MenuAction {
     }
 
     public static void mediaDetailsMenuAction (Cart cart, Media item) {
-        MenuDisplay.mediaDetailsMenu();
-        Scanner keyboard = new Scanner(System.in);
-        int choice = keyboard.nextInt();
         while (true) {
+            MenuDisplay.mediaDetailsMenu();
+            Scanner keyboard = new Scanner(System.in);
+            int choice = keyboard.nextInt();
             switch (choice) {
                 case 0:
                     MenuDisplay.clrscr();
@@ -120,8 +124,10 @@ public class MenuAction {
     }
 
     public static void updateStore (Store store) {
+        MenuDisplay.clrscr();
         int choice;
         while (true) {
+            MenuDisplay.clrscr();
             MenuDisplay.storeUpdateMenu();
             Scanner keyboard = new Scanner(System.in);
             choice = keyboard.nextInt();
@@ -134,6 +140,7 @@ public class MenuAction {
                     break;
                 case 2:
                     System.out.println("Enter the title of the media you want to remove from store: ");
+                    keyboard.nextLine();
                     String titleRemove = keyboard.nextLine();
                     MenuDisplay.clrscr();
                     int countMatchRemove = 0;
@@ -169,16 +176,21 @@ public class MenuAction {
                     return;
                 case 1:
                     System.out.println("Enter the title of the book you want to add to store: ");
+                    keyboard.nextLine();
                     String titleAddBook = keyboard.nextLine();
                     System.out.println("Enter the category of the book you want to add to store: ");
+                    keyboard.nextLine();
                     String categoryAddBook = keyboard.nextLine();
                     System.out.println("Enter the cost of the book you want to add to store: ");
+                    keyboard.nextLine();
                     float costAddBook = keyboard.nextFloat();
                     Book book = new Book(titleAddBook, categoryAddBook, costAddBook);
                     System.out.println("Enter the number of authors of the book you want to add to store: ");
+                    keyboard.nextLine();
                     int numAuthorsAddBook = keyboard.nextInt();
                     for (int i = 0; i < numAuthorsAddBook; i++) {
                         System.out.println("Enter the name of author " + (i + 1) + ": ");
+                        keyboard.nextLine();
                         String authorAddBook = keyboard.nextLine();
                         book.addAuthor(authorAddBook);
                     }
@@ -187,36 +199,49 @@ public class MenuAction {
                     break;
                 case 2:
                     System.out.println("Enter the title of the dvd you want to add to store: ");
+                    keyboard.nextLine();
                     String titleAddDVD = keyboard.nextLine();
                     System.out.println("Enter the category of the dvd you want to add to store: ");
+                    keyboard.nextLine();
                     String categoryAddDVD = keyboard.nextLine();
                     System.out.println("Enter the cost of the dvd you want to add to store: ");
+                    keyboard.nextLine();
                     float costAddDVD = keyboard.nextFloat();
                     System.out.println("Enter the director of the dvd you want to add to store: ");
+                    keyboard.nextLine();
                     String directorAddDVD = keyboard.nextLine();
                     System.out.println("Enter the length of the dvd you want to add to store: ");
+                    keyboard.nextLine();
                     int lengthAddDVD = keyboard.nextInt();
                     DigitalVideoDisc dvd = new DigitalVideoDisc(titleAddDVD, categoryAddDVD, directorAddDVD, lengthAddDVD, costAddDVD);
                     store.addMedia(dvd);
                     break;
                 case 3:
                     System.out.println("Enter the title of the cd you want to add to store: ");
+                    keyboard.nextLine();
                     String titleAddCD = keyboard.nextLine();
                     System.out.println("Enter the category of the cd you want to add to store: ");
+                    keyboard.nextLine();
                     String categoryAddCD = keyboard.nextLine();
                     System.out.println("Enter the cost of the cd you want to add to store: ");
+                    keyboard.nextLine();
                     float costAddCD = keyboard.nextFloat();
                     System.out.println("Enter the artist of the cd you want to add to store: ");
+                    keyboard.nextLine();
                     String artistAddCD = keyboard.nextLine();
                     System.out.println("Enter the length of the cd you want to add to store: ");
+                    keyboard.nextLine();
                     int lengthAddCD = keyboard.nextInt();
                     CompactDisc cd = new CompactDisc(titleAddCD, categoryAddCD, artistAddCD, lengthAddCD, costAddCD);
                     System.out.println("Enter the number of tracks of the cd you want to add to store: ");
+                    keyboard.nextLine();
                     int numTracksAddCD = keyboard.nextInt();
                     for (int i = 0; i < numTracksAddCD; i++) {
                         System.out.println("Enter the title of track " + (i + 1) + ": ");
+                        keyboard.nextLine();
                         String titleAddTrack = keyboard.nextLine();
                         System.out.println("Enter the length of track " + (i + 1) + ": ");
+                        keyboard.nextLine();
                         int lengthAddTrack = keyboard.nextInt();
                         Track track = new Track(titleAddTrack, lengthAddTrack);
                         cd.addTrack(track);
@@ -232,6 +257,7 @@ public class MenuAction {
 
     public static void cartMenuAction (Cart cart) {
         int choice;
+        MenuDisplay.clrscr();
         while (true) {
             MenuDisplay.cartMenu();
             Scanner keyboard = new Scanner(System.in);
@@ -247,6 +273,7 @@ public class MenuAction {
                     cartSort(cart);
                     break;
                 case 3:
+                    keyboard.nextLine();
                     String titleRemove = keyboard.nextLine();
                     int countMatchRemove = 0;
                     for (int i = 0; i < cart.getMediaList().size(); i++) {
@@ -262,6 +289,7 @@ public class MenuAction {
                     }
                     break;
                 case 4:
+                    keyboard.nextLine();
                     String titlePlay = keyboard.nextLine();
                     int countMatchPlay = 0;
                     for (int i = 0; i < cart.getMediaList().size(); i++) {
@@ -286,6 +314,7 @@ public class MenuAction {
     }
 
     public static void cartFilter (Cart cart) {
+        MenuDisplay.clrscr();
         int choice;
         while (true) {
             MenuDisplay.cartFilterMenu();
@@ -297,6 +326,7 @@ public class MenuAction {
                     return;
                 case 1:
                     System.out.println("Enter the title of the media you want to filter: ");
+                    keyboard.nextLine();
                     int titleFilterID = keyboard.nextInt();
                     MenuDisplay.clrscr();
                     int countMatchFilterID = 0;
@@ -313,6 +343,7 @@ public class MenuAction {
                     break;
                 case 2:
                     System.out.println("Enter the title of the media you want to filter: ");
+                    keyboard.nextLine();
                     String titleFilterTitle = keyboard.nextLine();
                     MenuDisplay.clrscr();
                     int countMatchFilterTitle = 0;
@@ -335,6 +366,7 @@ public class MenuAction {
     }
 
     public static void cartSort (Cart cart) {
+        MenuDisplay.clrscr();
         int choice;
         while (true) {
             MenuDisplay.cartSortMenu();
