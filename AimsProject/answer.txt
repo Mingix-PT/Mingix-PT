@@ -1,0 +1,50 @@
+Lê Quang Minh 20215088
+Answers:
+17. Sort media in the cart
+    1, What class should implement the Comparable interface?
+        - Media class should implement Comparable interface.
+
+    2, In those classes, how should you implement the compareTo()method to reflect the ordering that
+       we want?
+        - In Media class, we should implement the compareTo() method to reflect the ordering that we want
+        by comparing the title of two media. If the title of two media is the same, we compare the cost of
+        two media.
+        Here's the code:
+            @Override
+           public int compareTo(Media o) {
+                // TODO Auto-generated method stub
+                if (this.title.compareTo(o.title) == 0) {
+                    return Float.compare(this.cost, o.cost);
+                }
+                return this.title.compareTo(o.title);
+            }
+
+    3, Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this
+      Comparable interface approach?
+        - No, we can't. Because the Comparable interface only allows us to implement one compareTo() method.
+        If we want to have two ordering rules of the item, we have to use Comparator interface like in
+        the file.
+
+    4, Suppose the DVDs have a different ordering rule from the other media types, that is by title, then
+       decreasing length, then cost. How would you modify your code to allow this?
+        - We can create a new class called DVDComparator that implements Comparator interface and override
+        the compare() method to compare two DVDs by title, then decreasing length, then cost.
+        Here's the code:
+            public class DVDComparator implements Comparator<DigitalVideoDisc> {
+
+                @Override
+                public int compare(DigitalVideoDisc o1, DigitalVideoDisc o2) {
+                    // TODO Auto-generated method stub
+                    if (o1.getTitle().compareTo(o2.getTitle()) == 0) {
+                        if (o1.getLength() == o2.getLength()) {
+                            return Float.compare(o1.getCost(), o2.getCost());
+                        }
+                        return Integer.compare(o2.getLength(), o1.getLength());
+                    }
+                    return o1.getTitle().compareTo(o2.getTitle());
+                }
+
+            }
+        Then, we can use this class to sort DVDs in the cart.
+        Here's the code:
+            Collections.sort(cart, new DVDComparator());

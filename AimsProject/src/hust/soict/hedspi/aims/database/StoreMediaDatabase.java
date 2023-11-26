@@ -13,7 +13,6 @@ import java.util.Scanner;
 
 public class StoreMediaDatabase {
     public static Store getStoreMediaDatabase() {
-        String data = new String();
         List<Media> mediaList = new ArrayList<Media>();
         String fileName = "hust/soict/hedspi/aims/database/MediaDatabase.txt";
         File file = new File(fileName);
@@ -33,15 +32,6 @@ public class StoreMediaDatabase {
                     }
                     mediaList.add(book);
                 }
-                else if (temp.equals("DigitalVideoDisc")) {
-                    String title = input.nextLine();
-                    String category = input.nextLine();
-                    String director = input.nextLine();
-                    int length = Integer.parseInt(input.nextLine());
-                    float cost = Float.parseFloat(input.nextLine());
-                    DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
-                    mediaList.add(dvd);
-                }
                 else if (temp.equals("CompactDisc")) {
                     String title = input.nextLine();
                     String category = input.nextLine();
@@ -57,8 +47,16 @@ public class StoreMediaDatabase {
                         Track track = new Track(trackTitle, trackLength);
                         cd.addTrack(track);
                     }
-
                     mediaList.add(cd);
+                }
+                else if (temp.equals("DigitalVideoDisc")) {
+                    String title = input.nextLine();
+                    String category = input.nextLine();
+                    String director = input.nextLine();
+                    int length = Integer.parseInt(input.nextLine());
+                    float cost = Float.parseFloat(input.nextLine());
+                    DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
+                    mediaList.add(dvd);
                 }
                 else {
                     break;
