@@ -32,20 +32,20 @@ public class Store {
         }
     }
 
-//    public void printDVDList() {
-//        if (currentItem == 0) {
-//            System.out.println("The store is empty");
-//            return;
-//        }
-//        System.out.println("\n***********************STORE***********************");
-//        System.out.println("Items in store:");
-//        for (int i = 0; i < itemsInStore.length; i++) {
-//            if (itemsInStore[i] != null) {
-//                System.out.println((i+1) + ". " + itemsInStore[i].getTitle() + " - " + itemsInStore[i].getCategory() +
-//                        " - " + itemsInStore[i].getDirector() + " - " + itemsInStore[i].getLength() + " : " +
-//                        itemsInStore[i].getCost() + "$");
-//            }
-//        }
-//        System.out.println("**************************************************");
-//    }
+    public void printMediaList() {
+        if (itemsInStore.isEmpty()) {
+            System.out.println("The store is empty");
+            return;
+        }
+        System.out.println("\n***********************STORE***********************");
+        System.out.println("Items in store:");
+        for (int i = 0; i < itemsInStore.size(); i++) {
+            System.out.println((i+1) + ". " + itemsInStore.get(i).toString());
+        }
+        System.out.println("**************************************************");
+    }
+
+    public List<Media> getItemsInStore() {
+        return itemsInStore;
+    }
 }

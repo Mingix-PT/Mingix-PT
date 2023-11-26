@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public abstract class Media {
     protected int id;
@@ -42,7 +43,17 @@ public abstract class Media {
     public boolean equals(Object obj) {
         if (obj instanceof Media) {
             Media media = (Media) obj;
-            if (this.id == media.id) {
+            return Objects.equals(this.title, media.title);
+        }
+        return false;
+    }
+
+    public boolean isMatch(String keyword) {
+        String keywordLowerCase = keyword.toLowerCase();
+        String titleLowerCase = title.toLowerCase();
+        String[] words = keywordLowerCase.split(" ");
+        for (String word : words) {
+            if (!titleLowerCase.contains(word)) {
                 return true;
             }
         }

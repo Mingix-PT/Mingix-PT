@@ -1,23 +1,43 @@
 package hust.soict.hedspi.aims;
 
+import hust.soict.hedspi.aims.menu.MenuAction;
+import hust.soict.hedspi.aims.menu.MenuDisplay;
+import hust.soict.hedspi.aims.media.*;
+import hust.soict.hedspi.aims.store.Store;
 import hust.soict.hedspi.aims.cart.Cart;
-import hust.soict.hedspi.aims.media.DigitalVideoDisc;
+
+import java.util.Scanner;
+
 
 public class Aims {
     public static void main(String[] args) {
-        Cart anOrder = new Cart();
-        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-        anOrder.addDigitalVideoDisc(dvd1);
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
-        anOrder.addDigitalVideoDisc(dvd2);
-        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
-        anOrder.addDigitalVideoDisc(dvd3);
-
-        anOrder.removeDigitalVideoDisc(dvd3);
-        anOrder.printDVDList();
-        anOrder.searchDVD(1);
-        anOrder.searchDVD(3);
-        anOrder.searchDVD("One Lion Queen");
-        //System.out.println("Total Cost is: " + anOrder.totalCost());
+        int choice;
+        while (true) {
+            Cart cart = new Cart();
+            Store store = new Store();
+            MenuDisplay.showMenu();
+            Scanner keyboard = new Scanner(System.in);
+            choice = keyboard.nextInt();
+            switch (choice) {
+                case 0:
+                    MenuDisplay.clrscr();
+                    System.out.println("Thanks for using our application!");
+                    System.out.println("Exiting...");
+                    System.exit(0);
+                case 1:
+                    MenuAction.storeMenuAction(cart, store);
+                    break;
+                case 2:
+                    MenuAction.updateStore(store);
+                    break;
+                case 3:
+                    MenuDisplay.cartMenu();
+                    break;
+                default:
+                    MenuDisplay.clrscr();
+                    System.out.println("Invalid choice! Please choose again!");
+                    break;
+            }
+        }
     }
 }

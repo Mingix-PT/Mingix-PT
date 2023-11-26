@@ -30,9 +30,7 @@ public class Track implements Playable {
     public boolean equals(Object obj) {
         if (obj instanceof Track) {
             Track track = (Track) obj;
-            if (track.getTitle().equals(this.getTitle()) && track.getLength() == this.getLength()) {
-                return true;
-            }
+            return track.getTitle().equals(this.getTitle()) && track.getLength() == this.getLength();
         }
         return false;
     }

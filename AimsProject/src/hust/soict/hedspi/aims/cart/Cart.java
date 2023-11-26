@@ -5,6 +5,7 @@ import hust.soict.hedspi.aims.media.Media;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class Cart {
     public static final int MAX_NUMBER_ORDERED = 20;
@@ -91,5 +92,9 @@ public class Cart {
 
     public void sort(Comparator<Media> comparator) {
         Collections.sort(itemsOrdered, comparator);
+    }
+
+    public List<Media> getMediaList () {
+        return itemsOrdered;
     }
 }

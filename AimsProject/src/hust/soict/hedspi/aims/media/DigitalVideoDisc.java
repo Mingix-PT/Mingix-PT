@@ -43,18 +43,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
         id = nbDigitalVideoDiscs;
     }
 
-    public boolean isMatch(String keyword) {
-        String keywordLowerCase = keyword.toLowerCase();
-        String titleLowerCase = title.toLowerCase();
-        String[] words = keywordLowerCase.split(" ");
-        for (String word : words) {
-            if (!titleLowerCase.contains(word)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public void play() {
         System.out.println("Playing DVD: " + this.getTitle());

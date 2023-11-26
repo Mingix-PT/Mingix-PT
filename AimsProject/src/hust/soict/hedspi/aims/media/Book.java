@@ -29,6 +29,10 @@ public class Book extends Media {
         }
     }
 
+    public List<String> getAuthors() {
+        return authors;
+    }
+
     public String toString() {
         return "Book - " + super.getTitle() + " - " + super.getCategory() + " - " + super.getCost() + "$";
     }
