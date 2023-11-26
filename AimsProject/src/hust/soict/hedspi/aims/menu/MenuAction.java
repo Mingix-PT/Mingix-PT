@@ -311,6 +311,7 @@ public class MenuAction {
                     break;
                 case 5:
                     System.out.println("An order is created. Total cost: " + cart.totalPrice());
+                    cart.emptyCart();
                     break;
                 default:
                     System.out.println("Invalid choice! Please choose again!");
