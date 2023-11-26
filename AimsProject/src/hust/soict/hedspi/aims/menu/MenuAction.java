@@ -1,5 +1,6 @@
 package hust.soict.hedspi.aims.menu;
 
+import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 import hust.soict.hedspi.aims.menu.MenuDisplay;
 import hust.soict.hedspi.aims.media.*;
 import hust.soict.hedspi.aims.store.Store;
@@ -151,6 +152,7 @@ public class MenuAction {
                             store.removeMedia(item);
                             System.out.println("Removing media " + item.getTitle() + " from store...");
                             countMatchRemove++;
+                            StoreMediaDatabase.updateStoreMediaDatabase(store);
                         }
                     }
                     if (countMatchRemove == 0) {
@@ -196,6 +198,7 @@ public class MenuAction {
                         book.addAuthor(authorAddBook);
                     }
                     store.addMedia(book);
+                    StoreMediaDatabase.updateStoreMediaDatabase(store);
                     System.out.println("Adding book " + book.getTitle() + " to store...");
                     break;
                 case 2:
@@ -216,6 +219,7 @@ public class MenuAction {
                     int lengthAddDVD = keyboard.nextInt();
                     DigitalVideoDisc dvd = new DigitalVideoDisc(titleAddDVD, categoryAddDVD, directorAddDVD, lengthAddDVD, costAddDVD);
                     store.addMedia(dvd);
+                    StoreMediaDatabase.updateStoreMediaDatabase(store);
                     break;
                 case 3:
                     System.out.println("Enter the title of the cd you want to add to store: ");
@@ -248,6 +252,7 @@ public class MenuAction {
                         cd.addTrack(track);
                     }
                     store.addMedia(cd);
+                    StoreMediaDatabase.updateStoreMediaDatabase(store);
                     break;
                 default:
                     System.out.println("Invalid choice! Please choose again!");

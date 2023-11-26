@@ -115,6 +115,7 @@ public class StoreMediaDatabase {
                     }
                 }
             }
+            writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
