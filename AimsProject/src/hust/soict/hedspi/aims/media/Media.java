@@ -41,8 +41,7 @@ public abstract class Media {
     }
 
     public boolean equals(Object obj) {
-        if (obj instanceof Media) {
-            Media media = (Media) obj;
+        if (obj instanceof Media media) {
             return Objects.equals(this.title, media.title);
         }
         return false;

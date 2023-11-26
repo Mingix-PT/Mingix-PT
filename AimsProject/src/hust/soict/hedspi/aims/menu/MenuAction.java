@@ -115,6 +115,7 @@ public class MenuAction {
                     else {
                         System.out.println("This media is not playable!");
                     }
+                    return;
                 default:
                     MenuDisplay.clrscr();
                     System.out.println("Invalid choice! Please choose again!");

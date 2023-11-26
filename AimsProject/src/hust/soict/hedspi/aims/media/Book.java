@@ -15,7 +15,6 @@ public class Book extends Media {
         }
         else {
             authors.add(authorName);
-            System.out.println("The author has been added");
         }
     }
 
@@ -34,6 +33,6 @@ public class Book extends Media {
     }
 
     public String toString() {
-        return "Book - " + super.getTitle() + " - " + super.getCategory() + " - " + super.getCost() + "$";
+        return "Book - " + super.getTitle() + " - " + super.getCategory() + " - " + authors + " : " + super.getCost() +  "$";
     }
 }

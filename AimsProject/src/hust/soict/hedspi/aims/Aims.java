@@ -15,6 +15,7 @@ public class Aims {
     public static void main(String[] args) {
         Store store = StoreMediaDatabase.getStoreMediaDatabase();
         Cart cart = new Cart();
+        store.printMediaList();
         int choice;
         while (true) {
             MenuDisplay.showMenu();
@@ -25,6 +26,7 @@ public class Aims {
                     MenuDisplay.clrscr();
                     System.out.println("Thanks for using our application!");
                     System.out.println("Exiting...");
+                    StoreMediaDatabase.updateStoreMediaDatabase(store);
                     System.exit(0);
                 case 1:
                     MenuAction.storeMenuAction(cart, store);

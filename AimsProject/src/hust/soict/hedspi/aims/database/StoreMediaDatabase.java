@@ -19,47 +19,49 @@ public class StoreMediaDatabase {
         File file = new File(fileName);
         try {
             Scanner input = new Scanner(file);
-            while (input.hasNext()) {
+            while (input.hasNextLine()) {
                 String temp = input.nextLine();
-                switch (temp) {
-                    case "Book" -> {
-                        String title = input.nextLine();
-                        String category = input.nextLine();
-                        float cost = Float.parseFloat(input.nextLine());
-                        List<String> author = new ArrayList<String>();
-                        Book book = new Book(title, category, cost);
-                        int authorNumber = Integer.parseInt(input.nextLine());
-                        for (int i = 0; i < authorNumber; i++) {
-                            author.add(input.nextLine());
-                        }
-                        mediaList.add(book);
+                if (temp.equals("Book")) {
+                    String title = input.nextLine();
+                    String category = input.nextLine();
+                    float cost = Float.parseFloat(input.nextLine());
+                    Book book = new Book(title, category, cost);
+                    int authorNumber = Integer.parseInt(input.nextLine());
+                    for (int i = 0; i < authorNumber; i++) {
+                        String author = input.nextLine();
+                        book.addAuthor(author);
                     }
-                    case "DigitalVideoDisc" -> {
-                        String title = input.nextLine();
-                        String category = input.nextLine();
-                        String director = input.nextLine();
-                        int length = Integer.parseInt(input.nextLine());
-                        float cost = Float.parseFloat(input.nextLine());
-                        DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
-                        mediaList.add(dvd);
+                    mediaList.add(book);
+                }
+                else if (temp.equals("DigitalVideoDisc")) {
+                    String title = input.nextLine();
+                    String category = input.nextLine();
+                    String director = input.nextLine();
+                    int length = Integer.parseInt(input.nextLine());
+                    float cost = Float.parseFloat(input.nextLine());
+                    DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
+                    mediaList.add(dvd);
+                }
+                else if (temp.equals("CompactDisc")) {
+                    String title = input.nextLine();
+                    String category = input.nextLine();
+                    String artist = input.nextLine();
+                    String director = input.nextLine();
+                    int length = Integer.parseInt(input.nextLine());
+                    float cost = Float.parseFloat(input.nextLine());
+                    CompactDisc cd = new CompactDisc(title, category, artist, director, length, cost);
+                    int numberTracks = Integer.parseInt(input.nextLine());
+                    for (int i = 0; i < numberTracks; i++) {
+                        String trackTitle = input.nextLine();
+                        int trackLength = Integer.parseInt(input.nextLine());
+                        Track track = new Track(trackTitle, trackLength);
+                        cd.addTrack(track);
                     }
-                    case "CompactDisc" -> {
-                        String title = input.nextLine();
-                        String category = input.nextLine();
-                        String artist = input.nextLine();
-                        String director = input.nextLine();
-                        int length = Integer.parseInt(input.nextLine());
-                        float cost = Float.parseFloat(input.nextLine());
-                        CompactDisc cd = new CompactDisc(title, category, artist, director, length, cost);
-                        int numberTracks = Integer.parseInt(input.nextLine());
-                        for (int i = 0; i < numberTracks; i++) {
-                            String trackTitle = input.nextLine();
-                            int trackLength = Integer.parseInt(input.nextLine());
-                            Track track = new Track(trackTitle, trackLength);
-                            cd.addTrack(track);
-                        }
-                        mediaList.add(cd);
-                    }
+
+                    mediaList.add(cd);
+                }
+                else {
+                    break;
                 }
             }
             input.close();
@@ -73,17 +75,19 @@ public class StoreMediaDatabase {
         return store;
     }
 
-    public void updateStoreMediaDatabase(List<Media> mediaList) {
+    public static void updateStoreMediaDatabase(Store store) {
         String fileName = "hust/soict/hedspi/aims/database/MediaDatabase.txt";
         try {
             File file = new File(fileName);
             FileWriter writer = new FileWriter(file);
+            List<Media> mediaList = store.getItemsInStore();
             for (Media media : mediaList) {
                 if (media instanceof Book) {
                     writer.write("Book\n");
                     writer.write(media.getTitle() + "\n");
                     writer.write(media.getCategory() + "\n");
                     writer.write(media.getCost() + "\n");
+                    writer.write(((Book) media).getAuthors().size() + "\n");
                     for (String author : ((Book) media).getAuthors()) {
                         writer.write(author + "\n");
                     }
@@ -100,6 +104,7 @@ public class StoreMediaDatabase {
                     writer.write("CompactDisc\n");
                     writer.write(media.getTitle() + "\n");
                     writer.write(media.getCategory() + "\n");
+                    writer.write(((CompactDisc) media).getArtist() + "\n");
                     writer.write(((CompactDisc) media).getDirector() + "\n");
                     writer.write(((CompactDisc) media).getLength() + "\n");
                     writer.write(media.getCost() + "\n");
