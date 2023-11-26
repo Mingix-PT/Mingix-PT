@@ -1,9 +1,6 @@
 package hust.soict.hedspi.aims.media;
 
 public class DigitalVideoDisc extends Disc implements Playable {
-    private String director;
-    private int length;
-
     private static int nbDigitalVideoDiscs = 0;
 
     public String getDirector() {
