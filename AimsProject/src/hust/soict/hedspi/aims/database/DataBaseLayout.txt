@@ -1,0 +1,26 @@
+The database file's structure is as follows:
+1. DVD
+    DigitalVideoDisc
+    Tilte
+    Category
+    Author
+    Length
+    Price
+2. Book
+    Book
+    Tilte
+    Category
+    Price
+    Number of Authors: n
+    Next n lines: n Author
+3. CompactDisc
+    CompactDisc
+    Tilte
+    Category
+    Artist
+    Author
+    Length
+    Number of Tracks: n
+    Next 2n lines:
+        Track Title
+        Track Length

@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class StoreMediaDatabase {
     public static Store getStoreMediaDatabase() {
         List<Media> mediaList = new ArrayList<Media>();
-        String fileName = "hust/soict/hedspi/aims/database/MediaDatabase.txt";
+        String fileName = "C:\\Users\\DELL\\IdeaProjects\\OOLT.VN.20231-20215088.LeQuangMinh\\AimsProject\\src\\hust\\soict\\hedspi\\aims\\database\\MediaDatabase.txt";
         File file = new File(fileName);
         try {
             Scanner input = new Scanner(file);
