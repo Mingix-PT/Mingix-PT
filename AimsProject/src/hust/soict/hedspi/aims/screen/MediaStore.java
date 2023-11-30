@@ -13,6 +13,7 @@ public class MediaStore extends JPanel implements ActionListener {
     private Media media;
 
     public MediaStore(Media media, Cart cart) {
+
         this.media = media;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
