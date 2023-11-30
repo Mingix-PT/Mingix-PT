@@ -1,8 +1,8 @@
 DigitalVideoDisc
 Jojo's Bizarre Adventure: Battle Tendency
 Adventure
-null
-0
+Araki
+6
 12.0
 Book
 Jojo's Bizarre Adventure: Stardust Crusaders
@@ -46,6 +46,6 @@ Heaven's Falling Down
 DigitalVideoDisc
 Jojo's Bizarre Adventure: Phantom Blood
 Adventure
-null
-0
+Araki
+6
 12.0
