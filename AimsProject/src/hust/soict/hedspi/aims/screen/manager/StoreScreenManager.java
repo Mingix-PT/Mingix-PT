@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.screen.manager;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 import hust.soict.hedspi.aims.store.Store;
 import hust.soict.hedspi.aims.media.Media;
 

@@ -1,5 +1,6 @@
 package hust.soict.hedspi.aims.screen.manager;
 
+import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.store.Store;
@@ -38,11 +39,9 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
         center.add(tfDirector);
         center.add(lbLength);
         center.add(tfLength);
-        tfDirector.addActionListener(new DirectorInputListener());
-        tfLength.addActionListener(new LengthInputListener());
-        dvd = (DigitalVideoDisc) media;
-        dvd = new DigitalVideoDisc(title, category, director, length, cost);
-        store.addMedia(dvd);
+        JButton btnAddDVD = new JButton("Add DVD");
+        center.add(btnAddDVD);
+        btnAddDVD.addActionListener(new AddDVDListener());
         return center;
     }
 
@@ -57,6 +56,21 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
         @Override
         public void actionPerformed(ActionEvent e) {
             setMediaLength(Integer.parseInt(tfLength.getText()));
+        }
+    }
+
+    private class AddDVDListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            dvd = (DigitalVideoDisc) media;
+            title = tfTitle.getText();
+            category = tfCategory.getText();
+            cost = Float.parseFloat(tfCost.getText());
+            director = tfDirector.getText();
+            length = Integer.parseInt(tfLength.getText());
+            dvd = new DigitalVideoDisc(title, category, director, length, cost);
+            store.addMedia(dvd);
+            StoreMediaDatabase.updateStoreMediaDatabase(store);
         }
     }
 }

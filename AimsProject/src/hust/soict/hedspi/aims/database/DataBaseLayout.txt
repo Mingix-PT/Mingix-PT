@@ -18,7 +18,7 @@ The database file's structure is as follows:
     Tilte
     Category
     Artist
-    Author
+    Director
     Length
     Number of Tracks: n
     Next 2n lines:

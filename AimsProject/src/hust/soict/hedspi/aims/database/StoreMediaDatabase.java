@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StoreMediaDatabase {
+
+    private static String fileName = "C:\\Users\\DELL\\IdeaProjects\\OOLT.VN.20231-20215088.LeQuangMinh\\AimsProject\\src\\hust\\soict\\hedspi\\aims\\database\\MediaDatabase.txt";
     public static Store getStoreMediaDatabase() {
         List<Media> mediaList = new ArrayList<Media>();
-        String fileName = "C:\\Users\\DELL\\IdeaProjects\\OOLT.VN.20231-20215088.LeQuangMinh\\AimsProject\\src\\hust\\soict\\hedspi\\aims\\database\\MediaDatabase.txt";
         File file = new File(fileName);
         try {
             Scanner input = new Scanner(file);
@@ -63,7 +64,8 @@ public class StoreMediaDatabase {
                 }
             }
             input.close();
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
         Store store = new Store();
@@ -74,7 +76,6 @@ public class StoreMediaDatabase {
     }
 
     public static void updateStoreMediaDatabase(Store store) {
-        String fileName = "hust/soict/hedspi/aims/database/MediaDatabase.txt";
         try {
             File file = new File(fileName);
             FileWriter writer = new FileWriter(file);

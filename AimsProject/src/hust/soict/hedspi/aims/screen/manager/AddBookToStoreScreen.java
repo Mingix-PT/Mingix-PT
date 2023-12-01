@@ -2,6 +2,7 @@ package hust.soict.hedspi.aims.screen.manager;
 
 import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.store.Store;
+import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class AddBookToStoreScreen extends AddItemToStoreScreen {
     private int numberAuthor;
 
     private TextField tfAuthorName = new TextField();
-    private Label lbAuthorName = new Label("Author name: ");
+    private Label lbAuthorName = new Label("Authors' name: ");
     private Label lbNumberAuthor = new Label("Number of authors: ");
     private TextField tfNumberAuthor = new TextField();
 
@@ -26,33 +27,29 @@ public class AddBookToStoreScreen extends AddItemToStoreScreen {
 
     JPanel createCenter() {
         JPanel center = super.createCenter();
-        center.add(lbNumberAuthor);
-        center.add(tfNumberAuthor);
-        tfNumberAuthor.addActionListener(new NumberAuthorInputListener());
-        for (int i = 0; i < numberAuthor; i++) {
-            tfAuthorName = new TextField();
-            center.add(lbAuthorName);
-            center.add(tfAuthorName);
-            tfAuthorName.addActionListener(new AuthorNameInputListener());
-            book.addAuthor(authorNameTemp);
-        }
-        book = (Book) media;
-        book = new Book(title, category, cost);
-        store.addMedia(book);
+        center.add(lbAuthorName);
+        center.add(tfAuthorName);
+        JButton btnAddAuthor = new JButton("Add Book");
+        center.add(btnAddAuthor);
+        btnAddAuthor.addActionListener(new AddAuthorBtnListener());
         return center;
     }
 
-    private class NumberAuthorInputListener implements ActionListener {
+    private class AddAuthorBtnListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            numberAuthor = Integer.parseInt(tfNumberAuthor.getText());
-        }
-    }
-
-    private class AuthorNameInputListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
+            book = (Book) media;
+            title = tfTitle.getText();
+            category = tfCategory.getText();
+            cost = Float.parseFloat(tfCost.getText());
+            book = new Book(title, category, cost);
             authorNameTemp = tfAuthorName.getText();
+            String[] authorsName = authorNameTemp.split(",");
+            for (String authorName : authorsName) {
+                book.addAuthor(authorName);
+            }
+            store.addMedia(book);
+            StoreMediaDatabase.updateStoreMediaDatabase(store);
         }
     }
 }

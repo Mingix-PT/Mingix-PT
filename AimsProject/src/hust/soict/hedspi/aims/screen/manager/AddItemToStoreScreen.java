@@ -83,16 +83,13 @@ public abstract class AddItemToStoreScreen extends JFrame {
 
     JPanel createCenter() {
         JPanel center = new JPanel();
-        center.setLayout(new GridLayout(5, 2));
+        center.setLayout(new GridLayout(8, 2));
         center.add(lbTitle);
         center.add(tfTitle);
         center.add(lbCategory);
         center.add(tfCategory);
         center.add(lbCost);
         center.add(tfCost);
-        tfTitle.addActionListener(new TitleInputListener());
-        tfCategory.addActionListener(new CategoryInputListener());
-        tfCost.addActionListener(new CostInputListener());
         return center;
     }
 
@@ -107,27 +104,27 @@ public abstract class AddItemToStoreScreen extends JFrame {
         setVisible(true);
     }
 
-    protected class TitleInputListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            setMediaTitle(tfTitle.getText());
-            tfTitle.setText("");
-        }
-    }
-
-    protected class CategoryInputListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            setMediaCategory(tfCategory.getText());
-            tfCategory.setText("");
-        }
-    }
-
-    protected class CostInputListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            setMediaCost(Float.parseFloat(tfCost.getText()));
-            tfCost.setText("");
-        }
-    }
+//    protected class TitleInputListener implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            setMediaTitle(tfTitle.getText());
+//            tfTitle.setText("");
+//        }
+//    }
+//
+//    protected class CategoryInputListener implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            setMediaCategory(tfCategory.getText());
+//            tfCategory.setText("");
+//        }
+//    }
+//
+//    protected class CostInputListener implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            setMediaCost(Float.parseFloat(tfCost.getText()));
+//            tfCost.setText("");
+//        }
+//    }
 }
