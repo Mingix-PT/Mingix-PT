@@ -49,3 +49,15 @@ Adventure
 Araki
 6
 12.0
+Book
+Shrek 1
+Comedy
+12.0
+1
+LQM
+Book
+Shrek 2
+Comedy
+24.0
+1
+MQL
