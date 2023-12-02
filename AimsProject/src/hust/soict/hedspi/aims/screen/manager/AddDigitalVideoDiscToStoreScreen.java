@@ -2,7 +2,6 @@ package hust.soict.hedspi.aims.screen.manager;
 
 import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
-import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.store.Store;
 
 import javax.swing.*;
@@ -11,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
+    private StoreScreenManager storeScreenManager;
     private DigitalVideoDisc dvd;
     private String director;
     private int length;
@@ -19,16 +19,9 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
     protected Label lbDirector = new Label("Director: ");
     protected Label lbLength = new Label("Length: ");
 
-    protected void setMediaDirector(String director) {
-        this.director = director;
-    }
-
-    protected void setMediaLength(int length) {
-        this.length = length;
-    }
-
-    public AddDigitalVideoDiscToStoreScreen(Store store) {
+    public AddDigitalVideoDiscToStoreScreen(Store store, StoreScreenManager storeScreenManager) {
         super(store);
+        this.storeScreenManager = storeScreenManager;
         cp.add(createCenter(), BorderLayout.CENTER);
         setTitle("Add DVD to Store: ");
     }
@@ -45,20 +38,6 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
         return center;
     }
 
-    private class DirectorInputListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            setMediaDirector(tfDirector.getText());
-        }
-    }
-
-    private class LengthInputListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            setMediaLength(Integer.parseInt(tfLength.getText()));
-        }
-    }
-
     private class AddDVDListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -71,6 +50,8 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
             dvd = new DigitalVideoDisc(title, category, director, length, cost);
             store.addMedia(dvd);
             StoreMediaDatabase.updateStoreMediaDatabase(store);
+            SuccessDialog.SuccessAddedMediaDialog(dvd);
+            TurnOff.TurnOffAddMediaScreen(AddDigitalVideoDiscToStoreScreen.this, storeScreenManager);
         }
     }
 }

@@ -10,17 +10,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddBookToStoreScreen extends AddItemToStoreScreen {
+    private StoreScreenManager storeScreenManager;
     private Book book;
     private String authorNameTemp;
-    private int numberAuthor;
 
     private TextField tfAuthorName = new TextField();
     private Label lbAuthorName = new Label("Authors' name: ");
-    private Label lbNumberAuthor = new Label("Number of authors: ");
-    private TextField tfNumberAuthor = new TextField();
 
-    public AddBookToStoreScreen(Store store) {
+    public AddBookToStoreScreen(Store store, StoreScreenManager storeScreenManager) {
         super(store);
+        this.storeScreenManager = storeScreenManager;
         cp.add(createCenter(), BorderLayout.CENTER);
         setTitle("Add Book to Store: ");
     }
@@ -31,11 +30,11 @@ public class AddBookToStoreScreen extends AddItemToStoreScreen {
         center.add(tfAuthorName);
         JButton btnAddAuthor = new JButton("Add Book");
         center.add(btnAddAuthor);
-        btnAddAuthor.addActionListener(new AddAuthorBtnListener());
+        btnAddAuthor.addActionListener(new AddBookBtnListener());
         return center;
     }
 
-    private class AddAuthorBtnListener implements ActionListener {
+    private class AddBookBtnListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             book = (Book) media;
@@ -50,6 +49,8 @@ public class AddBookToStoreScreen extends AddItemToStoreScreen {
             }
             store.addMedia(book);
             StoreMediaDatabase.updateStoreMediaDatabase(store);
+            SuccessDialog.SuccessAddedMediaDialog(book);
+            TurnOff.TurnOffAddMediaScreen(AddBookToStoreScreen.this, storeScreenManager);
         }
     }
 }

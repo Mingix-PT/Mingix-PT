@@ -37,19 +37,19 @@ public class StoreScreenManager extends JFrame {
         smAddBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddBookToStoreScreen addBookToStoreScreen = new AddBookToStoreScreen(store);
+                AddBookToStoreScreen addBookToStoreScreen = new AddBookToStoreScreen(store, StoreScreenManager.this);
             }
         });
         smAddDVD.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddDigitalVideoDiscToStoreScreen addDigitalVideoDiscToStoreScreen = new AddDigitalVideoDiscToStoreScreen(store);
+                AddDigitalVideoDiscToStoreScreen addDigitalVideoDiscToStoreScreen = new AddDigitalVideoDiscToStoreScreen(store, StoreScreenManager.this);
             }
         });
         smAddCD.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddCompactDiscToStoreScreen addCompactDiscToStoreScreen = new AddCompactDiscToStoreScreen(store);
+                AddCompactDiscToStoreScreen addCompactDiscToStoreScreen = new AddCompactDiscToStoreScreen(store, StoreScreenManager.this);
             }
         });
         menu.add(smUpdateStore);
@@ -101,5 +101,15 @@ public class StoreScreenManager extends JFrame {
         setSize(1024, 768);
         setLocationRelativeTo(null);
         setVisible(true);
+    }
+
+    public void reRenderStoreScreen() {
+        Container cp = getContentPane();
+        cp.removeAll();
+        cp.setLayout(new BorderLayout());
+        cp.add(createNorth(), BorderLayout.NORTH);
+        cp.add(createCenter(), BorderLayout.CENTER);
+        cp.validate();
+        cp.repaint();
     }
 }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
+    protected StoreScreenManager storeScreenManager;
     protected CompactDisc cd;
     protected String artist;
     protected String director;
@@ -24,8 +25,9 @@ public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
     protected Label lbDirector = new Label("Director: ");
     protected Label lbNumberTracks = new Label("Number of tracks: ");
 
-    public AddCompactDiscToStoreScreen(Store store) {
+    public AddCompactDiscToStoreScreen(Store store, StoreScreenManager storeScreenManager) {
         super(store);
+        this.storeScreenManager = storeScreenManager;
         cp.add(createCenter(), BorderLayout.CENTER);
         setTitle("Add CD to Store: ");
     }
@@ -55,7 +57,7 @@ public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
             director = tfDirector.getText();
             cd = new CompactDisc(title, category, artist, director, cost);
             numberTracks = Integer.parseInt(tfNumberTracks.getText());
-            AddTrackToCDScreen addTrackToCDScreen = new AddTrackToCDScreen(store, numberTracks, cd);
+            AddTrackToCDScreen addTrackToCDScreen = new AddTrackToCDScreen(store, numberTracks, cd, AddCompactDiscToStoreScreen.this);
         }
     }
 }

@@ -16,14 +16,16 @@ import java.awt.event.ActionListener;
 public class AddTrackToCDScreen extends AddCompactDiscToStoreScreen {
     private CompactDisc cd;
     private int numberTracks;
+    private AddCompactDiscToStoreScreen addCompactDiscToStoreScreen;
     private List<Track> tracks = new ArrayList<>();
     private List<TextField> tfTracksName = new ArrayList<>();
     private List<TextField> tfTracksLength = new ArrayList<>();
 
-    public AddTrackToCDScreen(Store store, int numberTracks, CompactDisc cd) {
-        super(store);
+    public AddTrackToCDScreen(Store store, int numberTracks, CompactDisc cd, AddCompactDiscToStoreScreen addCompactDiscToStoreScreen) {
+        super(store, addCompactDiscToStoreScreen.storeScreenManager);
         this.numberTracks = numberTracks;
         this.cd = cd;
+        this.addCompactDiscToStoreScreen = addCompactDiscToStoreScreen;
         cp.add(createCenter(), BorderLayout.CENTER);
         setTitle("Add Tracks to CD: ");
     }
@@ -67,6 +69,9 @@ public class AddTrackToCDScreen extends AddCompactDiscToStoreScreen {
             cd.addTracks(tracks);
             store.addMedia(cd);
             StoreMediaDatabase.updateStoreMediaDatabase(store);
+            SuccessDialog.SuccessAddedMediaDialog(cd);
+            TurnOff.TurnOffAddMediaScreen(AddTrackToCDScreen.this, storeScreenManager);
+            TurnOff.TurnOffAddMediaScreen(addCompactDiscToStoreScreen, storeScreenManager);
         }
     }
 }

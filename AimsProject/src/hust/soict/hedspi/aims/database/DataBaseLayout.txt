@@ -12,7 +12,8 @@ The database file's structure is as follows:
     Category
     Price
     Number of Authors: n
-    Next n lines: n Author
+    Next n lines:
+        n Author
 3. CompactDisc
     CompactDisc
     Tilte

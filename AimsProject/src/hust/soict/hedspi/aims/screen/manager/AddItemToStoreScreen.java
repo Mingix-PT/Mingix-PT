@@ -26,23 +26,11 @@ public abstract class AddItemToStoreScreen extends JFrame {
     protected Label lbCategory = new Label("Category: ");
     protected Label lbCost = new Label("Cost: ");
 
-    protected void setMediaTitle (String title) {
-        this.title = title;
-    }
-
-    protected void setMediaCategory (String category) {
-        this.category = category;
-    }
-
-    protected void setMediaCost (float cost) {
-        this.cost = cost;
-    }
-
 
     JPanel createNorth() {
         JPanel north = new JPanel();
         north.setLayout(new BoxLayout(north, BoxLayout.Y_AXIS));
-        north.add(createMenuBar());
+//        north.add(createMenuBar());
         north.add(createHeader());
         return north;
     }
@@ -103,28 +91,4 @@ public abstract class AddItemToStoreScreen extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
-//    protected class TitleInputListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            setMediaTitle(tfTitle.getText());
-//            tfTitle.setText("");
-//        }
-//    }
-//
-//    protected class CategoryInputListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            setMediaCategory(tfCategory.getText());
-//            tfCategory.setText("");
-//        }
-//    }
-//
-//    protected class CostInputListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            setMediaCost(Float.parseFloat(tfCost.getText()));
-//            tfCost.setText("");
-//        }
-//    }
 }
