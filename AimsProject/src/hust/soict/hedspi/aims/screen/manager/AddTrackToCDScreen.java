@@ -26,8 +26,17 @@ public class AddTrackToCDScreen extends AddCompactDiscToStoreScreen {
         this.numberTracks = numberTracks;
         this.cd = cd;
         this.addCompactDiscToStoreScreen = addCompactDiscToStoreScreen;
+        cp.remove(btnAddCDTrack);
         cp.add(createCenter(), BorderLayout.CENTER);
+        cp.add(createAddCDButton(), BorderLayout.NORTH);
         setTitle("Add Tracks to CD: ");
+    }
+
+    JButton createAddCDButton() {
+        JButton btnAddCD = new JButton("Add CD");
+        btnAddCD.setPreferredSize(new Dimension(50, 25));
+        btnAddCD.addActionListener(new AddCDListener());
+        return btnAddCD;
     }
 
     @Override
@@ -46,9 +55,6 @@ public class AddTrackToCDScreen extends AddCompactDiscToStoreScreen {
             center.add(lbTrackLength);
             center.add(tfTrackLength);
         }
-        JButton btnAddCD = new JButton("Add CD");
-        center.add(btnAddCD);
-        btnAddCD.addActionListener(new AddCDListener());
         return center;
     }
 

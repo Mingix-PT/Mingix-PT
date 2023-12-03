@@ -21,16 +21,21 @@ public class AddBookToStoreScreen extends AddItemToStoreScreen {
         super(store);
         this.storeScreenManager = storeScreenManager;
         cp.add(createCenter(), BorderLayout.CENTER);
+        cp.add(createAddButton(), BorderLayout.NORTH);
         setTitle("Add Book to Store: ");
+    }
+
+    JButton createAddButton() {
+        JButton btnAddBook = new JButton("Add Book");
+        btnAddBook.setPreferredSize(new Dimension(50, 25));
+        btnAddBook.addActionListener(new AddBookBtnListener());
+        return btnAddBook;
     }
 
     JPanel createCenter() {
         JPanel center = super.createCenter();
         center.add(lbAuthorName);
         center.add(tfAuthorName);
-        JButton btnAddAuthor = new JButton("Add Book");
-        center.add(btnAddAuthor);
-        btnAddAuthor.addActionListener(new AddBookBtnListener());
         return center;
     }
 

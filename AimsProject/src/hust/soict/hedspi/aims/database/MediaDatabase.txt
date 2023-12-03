@@ -61,3 +61,27 @@ Comedy
 24.0
 1
 MQL
+CompactDisc
+Shrek 3
+Comedy
+LQM
+Fiona
+560
+12.0
+2
+Happy Forever After
+240
+True Love Kiss
+320
+CompactDisc
+JJBA: Jojolion
+Adventure
+LQM
+Araki
+360
+30.0
+2
+Soft Wet
+120
+Wonder of U
+240
