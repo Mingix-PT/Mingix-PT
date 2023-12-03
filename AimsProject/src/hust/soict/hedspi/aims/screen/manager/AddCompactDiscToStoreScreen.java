@@ -17,6 +17,7 @@ public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
     protected CompactDisc cd;
     protected String artist;
     protected String director;
+    protected JButton btnAddCDTrack;
     protected int numberTracks = 0;
     protected TextField tfArtist = new TextField();
     protected TextField tfDirector = new TextField();
@@ -29,7 +30,16 @@ public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
         super(store);
         this.storeScreenManager = storeScreenManager;
         cp.add(createCenter(), BorderLayout.CENTER);
+        cp.add(createAddCDTrackButton(), BorderLayout.NORTH);
         setTitle("Add CD to Store: ");
+    }
+    
+    JButton createAddCDTrackButton() {
+        JButton btnAddCD = new JButton("Add Tracks");
+        btnAddCD.setPreferredSize(new Dimension(50, 25));
+        btnAddCD.addActionListener(new AddCDTracksListener());
+        this.btnAddCDTrack = btnAddCD;
+        return btnAddCD;
     }
 
     JPanel createCenter() {
@@ -40,9 +50,6 @@ public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
         center.add(tfDirector);
         center.add(lbNumberTracks);
         center.add(tfNumberTracks);
-        JButton btnAddCDTracks = new JButton("Add Tracks");
-        center.add(btnAddCDTracks);
-        btnAddCDTracks.addActionListener(new AddCDTracksListener());
         return center;
     }
 

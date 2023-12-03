@@ -23,6 +23,7 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
         super(store);
         this.storeScreenManager = storeScreenManager;
         cp.add(createCenter(), BorderLayout.CENTER);
+        cp.add(createAddDVDButton(), BorderLayout.NORTH);
         setTitle("Add DVD to Store: ");
     }
 
@@ -32,10 +33,14 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
         center.add(tfDirector);
         center.add(lbLength);
         center.add(tfLength);
-        JButton btnAddDVD = new JButton("Add DVD");
-        center.add(btnAddDVD);
-        btnAddDVD.addActionListener(new AddDVDListener());
         return center;
+    }
+
+    JButton createAddDVDButton() {
+        JButton btnAddDVD = new JButton("Add DVD");
+        btnAddDVD.setPreferredSize(new Dimension(50, 25));
+        btnAddDVD.addActionListener(new AddDVDListener());
+        return btnAddDVD;
     }
 
     private class AddDVDListener implements ActionListener {

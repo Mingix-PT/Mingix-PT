@@ -84,10 +84,10 @@ public abstract class AddItemToStoreScreen extends JFrame {
     public AddItemToStoreScreen(Store store) {
         this.store = store;
 
-        cp.setLayout(new BorderLayout());
+        cp.setLayout(new BoxLayout(cp, BoxLayout.Y_AXIS));
         cp.add(createNorth(), BorderLayout.NORTH);
 
-        setSize(1024, 768);
+        setSize(500, 400);
         setLocationRelativeTo(null);
         setVisible(true);
     }
