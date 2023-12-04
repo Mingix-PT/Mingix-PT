@@ -1,13 +1,13 @@
 package hust.soict.hedspi.aims.screen.manager;
 
 import hust.soict.hedspi.aims.cart.Cart;
-import hust.soict.hedspi.aims.media.Media;
-import hust.soict.hedspi.aims.media.Playable;
+import hust.soict.hedspi.aims.media.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class MediaStore extends JPanel implements ActionListener {
     private Media media;
@@ -32,12 +32,20 @@ public class MediaStore extends JPanel implements ActionListener {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JDialog playDialog = new JDialog();
-                    playDialog.setTitle("Playing media " + media.getTitle());
-                    playDialog.setSize(400, 200);
-                    playDialog.setLocationRelativeTo(null);
-                    playDialog.setVisible(true);
-                    playDialog.add(new JLabel("Playing media " + media.getTitle()));
+                    StringBuilder message = new StringBuilder("Playing: " + media.getTitle() + "\n");
+                    if (media instanceof CompactDisc) {
+                        CompactDisc cd = (CompactDisc) media;
+                        List<Track> tracks = cd.getTrackList();
+                        for (Track track : tracks) {
+                            message.append("\tTrack: ").append(track.getTitle()).append(" - ").append(track.getLength()).append("\n");
+                        }
+                    }
+                    else {
+                        DigitalVideoDisc dvd = (DigitalVideoDisc) media;
+                        message.append("\tLength: ").append(dvd.getLength()).append("\n");
+                    }
                     ((Playable) media).play();
+                    JOptionPane.showMessageDialog(playDialog, message.toString());
                 }
             });
             container.add(playBtn);
