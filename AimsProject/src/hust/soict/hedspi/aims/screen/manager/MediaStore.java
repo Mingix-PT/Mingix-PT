@@ -32,19 +32,7 @@ public class MediaStore extends JPanel implements ActionListener {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JDialog playDialog = new JDialog();
-                    StringBuilder message = new StringBuilder("Playing: " + media.getTitle() + "\n");
-                    if (media instanceof CompactDisc) {
-                        CompactDisc cd = (CompactDisc) media;
-                        List<Track> tracks = cd.getTrackList();
-                        for (Track track : tracks) {
-                            message.append("\tTrack: ").append(track.getTitle()).append(" - ").append(track.getLength()).append("\n");
-                        }
-                    }
-                    else {
-                        DigitalVideoDisc dvd = (DigitalVideoDisc) media;
-                        message.append("\tLength: ").append(dvd.getLength()).append("\n");
-                    }
-                    ((Playable) media).play();
+                    String message = ((Playable) media).playMessage();
                     JOptionPane.showMessageDialog(playDialog, message.toString());
                 }
             });
