@@ -97,4 +97,8 @@ public class Cart {
     public List<Media> getMediaList () {
         return itemsOrdered;
     }
+
+    public void emptyCart() {
+        itemsOrdered.clear();
+    }
 }
