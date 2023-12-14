@@ -25,7 +25,7 @@ public class CartController {
         colMediaCategory.setCellValueFactory(new PropertyValueFactory<Media, String>("category"));
         colMediaCost.setCellValueFactory(new PropertyValueFactory<Media, Float>("cost"));
         if (cart.getMediaList() != null) {
-            tblMedia.setItems((ObservableList<S>) cart.getMediaList());
+            tblMedia.setItems(cart.getObservableMediaList());
         }
     }
 
@@ -54,7 +54,7 @@ public class CartController {
     private ToggleGroup filterCategory;
 
     @FXML
-    private TableView<?> tblMedia;
+    private TableView<Media> tblMedia;
 
     @FXML
     void btnPlayPressed(ActionEvent event) {

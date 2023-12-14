@@ -1,6 +1,8 @@
 package hust.soict.hedspi.aims.cart;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -96,6 +98,10 @@ public class Cart {
 
     public List<Media> getMediaList () {
         return itemsOrdered;
+    }
+
+    public ObservableList<Media> getObservableMediaList() {
+        return FXCollections.observableArrayList(itemsOrdered);
     }
 
     public void emptyCart() {
