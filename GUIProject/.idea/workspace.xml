@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1d3c4382-1916-4838-9e02-c95a87414e7d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/Painter.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/Painter.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/Painter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/Painter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/PainterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/PainterController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,19 +38,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/javafx-sdk-21.0.1/lib&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "topic/gui-project/init-painter",
+    "jdk.selected.JAVA_MODULE": "21",
+    "last_opened_file_path": "C:/Users/DELL/IdeaProjects/OOLT.VN.20231-20215088.LeQuangMinh/GUIProject",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\DELL\IdeaProjects\OOLT.VN.20231-20215088.LeQuangMinh\GUIProject\src\hust\soict\hedspi" />

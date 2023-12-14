@@ -6,20 +6,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Painter extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        try
-        {
-            Parent root = FXMLLoader.load(getClass().getResource("Painter.fxml"));
-            Scene scene = new Scene(root);
-            primaryStage.setTitle("Painter");
-            primaryStage.setScene(scene);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        String fxmlFile = "Painter.fxml";
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlFile)));
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("Painter");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

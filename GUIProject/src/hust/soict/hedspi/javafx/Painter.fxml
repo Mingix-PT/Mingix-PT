@@ -15,15 +15,25 @@
             <Insets right="8.0" />
          </BorderPane.margin>
          <children>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0">
-              <buttons>
-                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clearButtonPressed" text="Clear">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Button>
-              </buttons>
-            </ButtonBar>
+            <TitledPane prefHeight="100.0" prefWidth="100.0" text="Tools">
+               <content>
+                  <Pane prefHeight="94.0" prefWidth="131.0">
+                     <children>
+                        <RadioButton fx:id="penButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeColorDrawBlack" selected="true" text="Pen">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="RadioButtonTool" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="eraserButton" layoutX="14.0" layoutY="37.0" mnemonicParsing="false" onAction="#changeColorDrawWhite" text="Eraser" toggleGroup="$RadioButtonTool" />
+                     </children>
+                  </Pane>
+               </content>
+            </TitledPane>
+          <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clearButtonPressed" text="Clear">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
    </left>
