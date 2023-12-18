@@ -44,16 +44,29 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
         return btnAddDVD;
     }
 
+    public void deleteTextField() {
+        super.deleteTextField();
+        tfDirector.setText("");
+        tfLength.setText("");
+    }
+
     private class AddDVDListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            dvd = (DigitalVideoDisc) media;
-            title = tfTitle.getText();
-            category = tfCategory.getText();
-            cost = Float.parseFloat(tfCost.getText());
-            director = tfDirector.getText();
-            length = Integer.parseInt(tfLength.getText());
-            dvd = new DigitalVideoDisc(title, category, director, length, cost);
+            try {
+                dvd = (DigitalVideoDisc) media;
+                title = tfTitle.getText();
+                category = tfCategory.getText();
+                cost = Float.parseFloat(tfCost.getText());
+                director = tfDirector.getText();
+                length = Integer.parseInt(tfLength.getText());
+                dvd = new DigitalVideoDisc(title, category, director, length, cost);
+            }
+            catch (NumberFormatException ex) {
+                invalidInput();
+                deleteTextField();
+                return;
+            }
             try {
                 store.addMedia(dvd);
             } catch (LimitExceededException ex) {

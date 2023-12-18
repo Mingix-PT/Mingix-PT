@@ -53,17 +53,31 @@ public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
         return center;
     }
 
+    public void deleteTextField() {
+        super.deleteTextField();
+        tfArtist.setText("");
+        tfDirector.setText("");
+        tfNumberTracks.setText("");
+    }
+
     private class AddCDTracksListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            cd = (CompactDisc) media;
-            title = tfTitle.getText();
-            category = tfCategory.getText();
-            cost = Float.parseFloat(tfCost.getText());
-            artist = tfArtist.getText();
-            director = tfDirector.getText();
-            cd = new CompactDisc(title, category, artist, director, cost);
-            numberTracks = Integer.parseInt(tfNumberTracks.getText());
+            try {
+                cd = (CompactDisc) media;
+                title = tfTitle.getText();
+                category = tfCategory.getText();
+                cost = Float.parseFloat(tfCost.getText());
+                artist = tfArtist.getText();
+                director = tfDirector.getText();
+                cd = new CompactDisc(title, category, artist, director, cost);
+                numberTracks = Integer.parseInt(tfNumberTracks.getText());
+            }
+            catch (NumberFormatException ex) {
+                invalidInput();
+                deleteTextField();
+                return;
+            }
             AddTrackToCDScreen addTrackToCDScreen = new AddTrackToCDScreen(store, numberTracks, cd, AddCompactDiscToStoreScreen.this);
         }
     }

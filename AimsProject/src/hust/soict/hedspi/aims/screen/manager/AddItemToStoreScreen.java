@@ -26,6 +26,17 @@ public abstract class AddItemToStoreScreen extends JFrame {
     protected Label lbCategory = new Label("Category: ");
     protected Label lbCost = new Label("Cost: ");
 
+    protected void invalidInput() {
+        JOptionPane.showMessageDialog(null, "Invalid input!\n" +
+                "Please try again", "Add Item", JOptionPane.ERROR_MESSAGE);
+    }
+
+    protected void deleteTextField() {
+        tfTitle.setText("");
+        tfCategory.setText("");
+        tfCost.setText("");
+    }
+
 
     JPanel createNorth() {
         JPanel north = new JPanel();

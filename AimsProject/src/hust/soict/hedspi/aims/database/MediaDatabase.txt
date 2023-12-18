@@ -1,24 +1,24 @@
 DigitalVideoDisc
-Jojo's Bizarre Adventure: Battle Tendency
+JJBA: Battle Tendency
 Adventure
 Araki
 6
 12.0
 Book
-Jojo's Bizarre Adventure: Stardust Crusaders
+JJBA: Stardust Crusaders
 Adventure
 96.0
 2
 LQM
 Araki
 Book
-Jojo's Bizarre Adventure: Diamnond is Unbreakable
+JJBA: Diamnond is Unbreakable
 Adventure
 78.0
 1
 Araki
 CompactDisc
-Jojo's Bizarre Adventure: Golden Wind
+JJBA: Golden Wind
 Adventure
 LQM
 Araki
@@ -30,7 +30,7 @@ Fighting Gold
 Uragirimono no Requiem
 90
 CompactDisc
-Jojo's Bizarre Adventure: Stone Ocean
+JJBA: Stone Ocean
 Adventure
 LQM
 Araki
@@ -44,7 +44,7 @@ Distant Dreamer
 Heaven's Falling Down
 216
 DigitalVideoDisc
-Jojo's Bizarre Adventure: Phantom Blood
+JJBA: Phantom Blood
 Classical
 Araki
 6

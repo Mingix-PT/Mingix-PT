@@ -62,7 +62,14 @@ public class CartController {
                 } else {
                     ObservableList<Media> filteredList = cart.getObservableMediaList().filtered(media -> {
                         if (radioBtnFilterId.isSelected()) {
-                            return media.getId() == Integer.parseInt(filterText);
+                            try
+                            {
+                                return media.getId() == Integer.parseInt(filterText);
+                            }
+                            catch (NumberFormatException e)
+                            {
+                                return false;
+                            }
                         } else {
                             return media.getTitle().toLowerCase().contains(filterText.toLowerCase());
                         }
