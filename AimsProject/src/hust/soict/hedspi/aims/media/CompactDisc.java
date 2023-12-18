@@ -1,5 +1,8 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,21 +97,45 @@ public class CompactDisc extends Disc implements Playable{
     }
 
     @Override
-    public void play() {
-        System.out.println("Playing CD: " + this.getTitle());
-        System.out.println("CD length: " + this.getLength());
-        for (Track track : trackList) {
-            track.play();
+    public void play() throws PlayerException {
+        if (this.getLength() <= 0) {
+            throw new PlayerException("ERROR: CD length is non-positive!");
+        }
+        else {
+            System.out.println("Playing CD: " + this.getTitle());
+            System.out.println("CD length: " + this.getLength());
+            for (Track track : trackList) {
+                try {
+                    track.play();
+                } catch (PlayerException e) {
+                    throw e;
+                }
+            }
         }
     }
 
     @Override
-    public String playMessage() {
-        String message = "Playing CD: " + this.getTitle() + "\nCD length: " + this.getLength();
-        for (Track track : trackList) {
-            message += "\n" + track.playMessage();
+    public String playMessage() throws PlayerException {
+        if (this.getLength() <= 0) {
+            throw new PlayerException("ERROR: CD length is non-positive!");
         }
-        return message;
+        else {
+            StringBuilder message = new StringBuilder("Playing CD: " + this.getTitle() + "\nCD length: " + this.getLength());
+            for (Track track : trackList) {
+                message.append("\n").append(track.playMessage());
+            }
+            return message.toString();
+        }
+    }
+
+    @Override
+    public void playOptionPane() throws PlayerException {
+        if (this.getLength() <= 0) {
+            throw new PlayerException("ERROR: CD length is non-positive!");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, this.playMessage());
+        }
     }
 
     public String toString() {

@@ -27,7 +27,7 @@ public abstract class AddItemToStoreScreen extends JFrame {
     protected Label lbCost = new Label("Cost: ");
 
     protected void invalidInput() {
-        JOptionPane.showMessageDialog(null, "Invalid input!\n" +
+        JOptionPane.showMessageDialog(null, "Invalid input!\nLength and cost should be a number" +
                 "Please try again", "Add Item", JOptionPane.ERROR_MESSAGE);
     }
 
@@ -41,7 +41,6 @@ public abstract class AddItemToStoreScreen extends JFrame {
     JPanel createNorth() {
         JPanel north = new JPanel();
         north.setLayout(new BoxLayout(north, BoxLayout.Y_AXIS));
-//        north.add(createMenuBar());
         north.add(createHeader());
         return north;
     }

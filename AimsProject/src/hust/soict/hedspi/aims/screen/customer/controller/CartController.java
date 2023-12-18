@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.screen.customer.controller;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 import hust.soict.hedspi.aims.store.Store;
@@ -130,10 +131,15 @@ public class CartController {
     private Button btnPlaceOrder;
 
     @FXML
-    void btnPlayPressed(ActionEvent event) {
+    void btnPlayPressed(ActionEvent event) throws PlayerException {
         Media media = tblMedia.getSelectionModel().getSelectedItem();
-        String message = ((Playable) media).playMessage();
-        JOptionPane.showMessageDialog(null, message, "Play", JOptionPane.INFORMATION_MESSAGE);
+        try {
+            String message = ((Playable) media).playMessage();
+            JOptionPane.showMessageDialog(null, message, "Play", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch (PlayerException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Play", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML

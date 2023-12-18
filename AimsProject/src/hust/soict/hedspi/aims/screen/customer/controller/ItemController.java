@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.screen.customer.controller;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 import javafx.event.ActionEvent;
@@ -57,9 +58,13 @@ public class ItemController {
     }
 
     @FXML
-    void btnPlayClicked(ActionEvent event) {
-        String message = ((Playable) media).playMessage();
-        JOptionPane.showMessageDialog(null, message, "Play", JOptionPane.INFORMATION_MESSAGE);
+    void btnPlayClicked(ActionEvent event) throws PlayerException {
+        try {
+            String message = ((Playable) media).playMessage();
+            JOptionPane.showMessageDialog(null, message, "Play", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch (PlayerException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Play", JOptionPane.ERROR_MESSAGE);
+        }
     }
-
 }
