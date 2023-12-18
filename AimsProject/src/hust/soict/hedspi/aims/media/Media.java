@@ -44,11 +44,14 @@ public abstract class Media {
         id = ++idCount;
     }
 
-    public boolean equals(Object obj) {
-        if (obj instanceof Media media) {
-            return Objects.equals(this.title, media.title);
+    public boolean equals(Object obj) throws ClassCastException, NullPointerException {
+        if (obj == null) {
+            throw new NullPointerException("ERROR: Null object!");
         }
-        return false;
+        if (!(obj instanceof Media media)) {
+            throw new ClassCastException("ERROR: Not a media!");
+        }
+        return (Objects.equals(this.title, media.title) && (this.cost == media.cost));
     }
 
     public boolean isMatch(String keyword) {

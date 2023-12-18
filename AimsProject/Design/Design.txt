@@ -1,0 +1,1 @@
+Note: All class diagrams are in the AimsProject_ClassDiagram.astah file, in the root folder. Please check them out.

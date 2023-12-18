@@ -3,18 +3,18 @@ JJBA: Battle Tendency
 Adventure
 Araki
 6
-12.0
+12.41
 Book
 JJBA: Stardust Crusaders
 Adventure
-96.0
+96.57
 2
 LQM
 Araki
 Book
 JJBA: Diamnond is Unbreakable
 Adventure
-78.0
+78.12
 1
 Araki
 CompactDisc
@@ -23,7 +23,7 @@ Adventure
 LQM
 Araki
 180
-78.0
+78.12
 2
 Fighting Gold
 90
@@ -35,7 +35,7 @@ Adventure
 LQM
 Araki
 763
-78.0
+78.12
 3
 Stone Ocean
 242
@@ -48,17 +48,17 @@ JJBA: Phantom Blood
 Classical
 Araki
 6
-12.0
+24.13
 Book
 Shrek 1
 Comedy
-12.0
+12.78
 1
 LQM
 Book
 Shrek 2
 Comedy
-24.0
+30.4
 1
 MQL
 CompactDisc
@@ -89,5 +89,5 @@ DigitalVideoDisc
 JJBA: Steel Ball Run
 Cowboy
 aRaKi
--2
+0
 13.41
