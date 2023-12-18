@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d3c4382-1916-4838-9e02-c95a87414e7d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../AimsProject/Design/AimsProject_ClassDiagram.asta.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OtherProjects/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OtherProjects/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +16,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -39,11 +39,13 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "topic/aims-project/random-stuff",
-    "last_opened_file_path": "C:/Users/DELL/IdeaProjects/OOLT.VN.20231-20215088.LeQuangMinh",
-    "project.structure.last.edited": "Libraries",
+    "git-widget-placeholder": "topic/aims-project/customer",
+    "jdk.selected.JAVA_MODULE": "21",
+    "last_opened_file_path": "C:/Users/DELL/IdeaProjects/OOLT.VN.20231-20215088.LeQuangMinh/GUIProject",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -55,7 +57,7 @@
     <configuration name="JavaFX" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="hust.soict.hedspi.swing.NumberGrid" />
+      <option name="MAIN_CLASS_NAME" value="hust.soict.hedspi.javafx.Painter" />
       <module name="GUIProject" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-21.0.1\lib&quot; --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web,javafx.swt" />
       <method v="2">
@@ -81,5 +83,20 @@
       <updated>1701322798463</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
