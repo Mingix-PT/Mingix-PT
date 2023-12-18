@@ -3,6 +3,7 @@ package hust.soict.hedspi.aims.store;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
 
+import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,14 +11,13 @@ public class Store {
     static final int MAX_ITEMS = 100;
     private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
-    public void addMedia (Media media) {
+    public void addMedia (Media media) throws LimitExceededException, IllegalArgumentException {
         if (itemsInStore.size() == MAX_ITEMS) {
             System.out.println("The store is full");
-            return;
+            throw new LimitExceededException("ERROR: The number of medias has reached its limit");
         }
         if (itemsInStore.contains(media)) {
-            System.out.println("The disc is already in the store");
-            return;
+            throw new IllegalArgumentException("ERROR: The media is already in the store");
         }
         itemsInStore.add(media);
     }

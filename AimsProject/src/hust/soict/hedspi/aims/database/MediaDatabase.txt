@@ -1,41 +1,41 @@
 DigitalVideoDisc
-Jojo's Bizarre Adventure: Battle Tendency
+JJBA: Battle Tendency
 Adventure
 Araki
 6
-12.0
+12.41
 Book
-Jojo's Bizarre Adventure: Stardust Crusaders
+JJBA: Stardust Crusaders
 Adventure
-96.0
+96.57
 2
 LQM
 Araki
 Book
-Jojo's Bizarre Adventure: Diamnond is Unbreakable
+JJBA: Diamnond is Unbreakable
 Adventure
-78.0
+78.12
 1
 Araki
 CompactDisc
-Jojo's Bizarre Adventure: Golden Wind
+JJBA: Golden Wind
 Adventure
 LQM
 Araki
 180
-78.0
+78.12
 2
 Fighting Gold
 90
 Uragirimono no Requiem
 90
 CompactDisc
-Jojo's Bizarre Adventure: Stone Ocean
+JJBA: Stone Ocean
 Adventure
 LQM
 Araki
 763
-78.0
+78.12
 3
 Stone Ocean
 242
@@ -44,21 +44,21 @@ Distant Dreamer
 Heaven's Falling Down
 216
 DigitalVideoDisc
-Jojo's Bizarre Adventure: Phantom Blood
-Adventure
+JJBA: Phantom Blood
+Classical
 Araki
 6
-12.0
+24.13
 Book
 Shrek 1
 Comedy
-12.0
+12.78
 1
 LQM
 Book
 Shrek 2
 Comedy
-24.0
+30.4
 1
 MQL
 CompactDisc
@@ -85,3 +85,9 @@ Soft Wet
 120
 Wonder of U
 240
+DigitalVideoDisc
+JJBA: Steel Ball Run
+Cowboy
+aRaKi
+0
+13.41

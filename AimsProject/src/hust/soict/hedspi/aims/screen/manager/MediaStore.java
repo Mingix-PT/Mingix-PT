@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.screen.manager;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.*;
 
 import javax.swing.*;
@@ -32,8 +33,13 @@ public class MediaStore extends JPanel implements ActionListener {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JDialog playDialog = new JDialog();
-                    String message = ((Playable) media).playMessage();
-                    JOptionPane.showMessageDialog(playDialog, message.toString());
+                    String message = null;
+                    try {
+                        message = ((Playable) media).playMessage();
+                        JOptionPane.showMessageDialog(playDialog, message.toString());
+                    } catch (PlayerException ex) {
+                        JOptionPane.showMessageDialog(playDialog, ex.getMessage());
+                    }
                 }
             });
             container.add(playBtn);

@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.naming.LimitExceededException;
+
 public class TestViewStoreScreen extends Application {
     private static Cart cart;
     private static Store store;
@@ -28,7 +30,7 @@ public class TestViewStoreScreen extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LimitExceededException {
         store = StoreMediaDatabase.getStoreMediaDatabase();
         cart = new Cart();
         launch(args);

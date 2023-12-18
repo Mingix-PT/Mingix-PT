@@ -1,17 +1,19 @@
 package hust.soict.hedspi.aims.menu;
 
 import hust.soict.hedspi.aims.database.StoreMediaDatabase;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.menu.MenuDisplay;
 import hust.soict.hedspi.aims.media.*;
 import hust.soict.hedspi.aims.store.Store;
 import hust.soict.hedspi.aims.cart.Cart;
 
+import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class MenuAction {
-    public static void storeMenuAction (Cart cart, Store store) {
+    public static void storeMenuAction (Cart cart, Store store) throws LimitExceededException, PlayerException {
         MenuDisplay.clrscr();
         int choice;
         while (true) {
@@ -75,7 +77,12 @@ public class MenuAction {
                     for (int i = 0; i < store.getItemsInStore().size(); i++) {
                         Media item = store.getItemsInStore().get(i);
                         if (item.getTitle().equals(titlePlay) && item instanceof Playable) {
-                            ((Playable) item).play();
+                            try {
+                                ((Playable) item).play();
+                            }
+                            catch (PlayerException e) {
+                                System.out.println(e.getMessage());
+                            }
                             countMatchPlay++;
                         }
                     }
@@ -96,7 +103,7 @@ public class MenuAction {
         }
     }
 
-    public static void mediaDetailsMenuAction (Cart cart, Media item) {
+    public static void mediaDetailsMenuAction (Cart cart, Media item) throws PlayerException {
         while (true) {
             MenuDisplay.mediaDetailsMenu();
             Scanner keyboard = new Scanner(System.in);
@@ -111,7 +118,12 @@ public class MenuAction {
                     return;
                 case 2:
                     if (item instanceof Playable) {
-                        ((Playable) item).play();
+                        try {
+                            ((Playable) item).play();
+                        }
+                        catch (PlayerException e) {
+                            System.out.println(e.getMessage());
+                        }
                     }
                     else {
                         System.out.println("This media is not playable!");
@@ -125,7 +137,7 @@ public class MenuAction {
         }
     }
 
-    public static void updateStore (Store store) {
+    public static void updateStore (Store store) throws LimitExceededException {
         MenuDisplay.clrscr();
         int choice;
         while (true) {
@@ -166,7 +178,7 @@ public class MenuAction {
         }
     }
 
-    public static void updateStoreAddChoice(Store store) {
+    public static void updateStoreAddChoice(Store store) throws LimitExceededException {
         MenuDisplay.clrscr();
         int choice;
         while (true) {
@@ -261,7 +273,7 @@ public class MenuAction {
         }
     }
 
-    public static void cartMenuAction (Cart cart) {
+    public static void cartMenuAction (Cart cart) throws PlayerException {
         int choice;
         MenuDisplay.clrscr();
         while (true) {
@@ -301,7 +313,12 @@ public class MenuAction {
                     for (int i = 0; i < cart.getMediaList().size(); i++) {
                         Media item = cart.getMediaList().get(i);
                         if (item.getTitle().equals(titlePlay) && item instanceof Playable) {
-                            ((Playable) item).play();
+                            try {
+                                ((Playable) item).play();
+                            }
+                            catch (PlayerException e) {
+                                System.out.println(e.getMessage());
+                            }
                             countMatchPlay++;
                         }
                     }

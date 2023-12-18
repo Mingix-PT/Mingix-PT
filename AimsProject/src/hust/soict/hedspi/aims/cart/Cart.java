@@ -4,6 +4,7 @@ import hust.soict.hedspi.aims.media.Media;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,14 +14,14 @@ public class Cart {
     public static final int MAX_NUMBER_ORDERED = 20;
     private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
 
-    public void addMedia(Media media) {
-        if (itemsOrdered.size() < MAX_NUMBER_ORDERED) {
-            itemsOrdered.add(media);
-            System.out.println("The disc has been added");
+    public void addMedia(Media media) throws LimitExceededException, IllegalArgumentException {
+        if (itemsOrdered.size() == MAX_NUMBER_ORDERED) {
+            throw new LimitExceededException("ERROR: The number of medias has reached its limit");
         }
-        else {
-            System.out.println("The cart is almost full");
+        if (itemsOrdered.contains(media)) {
+            throw new IllegalArgumentException("ERROR: The media is already in the cart");
         }
+        itemsOrdered.add(media);
     }
 
     public void removeMedia(Media media) {
@@ -47,33 +48,6 @@ public class Cart {
         System.out.println("**************************************************");
 
     }
-
-//
-//    public void searchDVD (int id) {
-//        for (int i = 0; i < qtyOrdered; i++) {
-//            if (itemsOrdered[i].getId() == id) {
-//                System.out.println("The disc with ID " + id + " is in the cart:");
-//                System.out.println(itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCategory() +
-//                        " - " + itemsOrdered[i].getDirector() + " - " + itemsOrdered[i].getLength() + " : " +
-//                        itemsOrdered[i].getCost() + "$");
-//                return;
-//            }
-//        }
-//        System.out.println("The disc with ID " + id + " is not in the cart");
-//    }
-//
-//    public void searchDVD(String title) {
-//        for (int i = 0; i < qtyOrdered; i++) {
-//            if (itemsOrdered[i].isMatch(title)) {
-//                System.out.println("The disc with title \"" + title + "\":");
-//                System.out.println(itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCategory() +
-//                        " - " + itemsOrdered[i].getDirector() + " - " + itemsOrdered[i].getLength() + " : " +
-//                        itemsOrdered[i].getCost() + "$");
-//                return;
-//            }
-//        }
-//        System.out.println("The disc with title \"" + title + "\" is not in the cart");
-//    }
 
     public float totalCost() {
         float total = 0;

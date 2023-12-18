@@ -4,6 +4,7 @@ import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.store.Store;
 
+import javax.naming.LimitExceededException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -43,17 +44,34 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
         return btnAddDVD;
     }
 
+    public void deleteTextField() {
+        super.deleteTextField();
+        tfDirector.setText("");
+        tfLength.setText("");
+    }
+
     private class AddDVDListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            dvd = (DigitalVideoDisc) media;
-            title = tfTitle.getText();
-            category = tfCategory.getText();
-            cost = Float.parseFloat(tfCost.getText());
-            director = tfDirector.getText();
-            length = Integer.parseInt(tfLength.getText());
-            dvd = new DigitalVideoDisc(title, category, director, length, cost);
-            store.addMedia(dvd);
+            try {
+                dvd = (DigitalVideoDisc) media;
+                title = tfTitle.getText();
+                category = tfCategory.getText();
+                cost = Float.parseFloat(tfCost.getText());
+                director = tfDirector.getText();
+                length = Integer.parseInt(tfLength.getText());
+                dvd = new DigitalVideoDisc(title, category, director, length, cost);
+            }
+            catch (NumberFormatException ex) {
+                invalidInput();
+                deleteTextField();
+                return;
+            }
+            try {
+                store.addMedia(dvd);
+            } catch (LimitExceededException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Add DVD", JOptionPane.ERROR_MESSAGE);
+            }
             StoreMediaDatabase.updateStoreMediaDatabase(store);
             SuccessDialog.SuccessAddedMediaDialog(dvd);
             TurnOff.TurnOffAddMediaScreen(AddDigitalVideoDiscToStoreScreen.this, storeScreenManager);

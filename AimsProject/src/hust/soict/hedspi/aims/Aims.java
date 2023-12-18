@@ -4,51 +4,52 @@ import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 import hust.soict.hedspi.aims.menu.MenuAction;
 import hust.soict.hedspi.aims.menu.MenuDisplay;
 import hust.soict.hedspi.aims.media.*;
+import hust.soict.hedspi.aims.screen.customer.controller.ViewStoreController;
 import hust.soict.hedspi.aims.screen.manager.StoreScreenManager;
 import hust.soict.hedspi.aims.store.Store;
 import hust.soict.hedspi.aims.cart.Cart;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+import javax.naming.LimitExceededException;
 import java.util.List;
 import java.util.Scanner;
 
+    // Customer view
+public class Aims extends Application {
+    private static Cart cart;
+    private static Store store;
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        final String STORE_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/Store.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource(STORE_FXML_FILE_PATH));
+        ViewStoreController viewStoreController = new ViewStoreController(store, cart);
+        fxmlLoader.setController(viewStoreController);
+        Parent parent = fxmlLoader.load();
 
-public class Aims {
-    public static void main(String[] args) {
-        Store store = StoreMediaDatabase.getStoreMediaDatabase();
+        Scene scene = new Scene(parent);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Store");
+        primaryStage.show();
+    }
 
-//        Store store = new Store();
-//        store.addMedia(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
-//        store.addMedia(new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f));
-
-        Cart cart = new Cart();
-        store.printMediaList();
-        StoreScreenManager storeScreenManager = new StoreScreenManager(store);
-//        int choice;
-//        while (true) {
-//            MenuDisplay.showMenu();
-//            Scanner keyboard = new Scanner(System.in);
-//            choice = keyboard.nextInt();
-//            switch (choice) {
-//                case 0:
-//                    MenuDisplay.clrscr();
-//                    System.out.println("Thanks for using our application!");
-//                    System.out.println("Exiting...");
-//                    StoreMediaDatabase.updateStoreMediaDatabase(store);
-//                    System.exit(0);
-//                case 1:
-//                    MenuAction.storeMenuAction(cart, store);
-//                    break;
-//                case 2:
-//                    MenuAction.updateStore(store);
-//                    break;
-//                case 3:
-//                    MenuAction.cartMenuAction(cart);
-//                    break;
-//                default:
-//                    MenuDisplay.clrscr();
-//                    System.out.println("Invalid choice! Please choose again!");
-//                    break;
-//            }
-//        }
+    public static void main(String[] args) throws LimitExceededException {
+        store = StoreMediaDatabase.getStoreMediaDatabase();
+        cart = new Cart();
+        launch(args);
     }
 }
+
+    // Manager view
+//public class Aims {
+//    public static void main(String[] args) throws LimitExceededException {
+//        Store store = StoreMediaDatabase.getStoreMediaDatabase();
+//        Cart cart = new Cart();
+//        store.printMediaList();
+//        StoreScreenManager storeScreenManager = new StoreScreenManager(store);
+//    }
+//}

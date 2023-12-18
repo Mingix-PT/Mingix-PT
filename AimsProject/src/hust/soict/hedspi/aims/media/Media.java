@@ -8,6 +8,7 @@ public abstract class Media {
     protected String title;
     protected String category;
     protected float cost;
+    protected static int idCount = 0;
 
     public int getId() {
         return id;
@@ -27,24 +28,30 @@ public abstract class Media {
 
     public Media(String title) {
         this.title = title;
+        id = ++idCount;
     }
 
     public Media(String title, String category) {
         this.title = title;
         this.category = category;
+        id = ++idCount;
     }
 
     public Media(String title, String category, float cost) {
         this.title = title;
         this.category = category;
         this.cost = cost;
+        id = ++idCount;
     }
 
-    public boolean equals(Object obj) {
-        if (obj instanceof Media media) {
-            return Objects.equals(this.title, media.title);
+    public boolean equals(Object obj) throws ClassCastException, NullPointerException {
+        if (obj == null) {
+            throw new NullPointerException("ERROR: Null object!");
         }
-        return false;
+        if (!(obj instanceof Media media)) {
+            throw new ClassCastException("ERROR: Not a media!");
+        }
+        return (Objects.equals(this.title, media.title) && (this.cost == media.cost));
     }
 
     public boolean isMatch(String keyword) {

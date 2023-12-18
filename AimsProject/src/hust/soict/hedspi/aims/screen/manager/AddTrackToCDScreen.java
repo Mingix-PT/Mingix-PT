@@ -5,6 +5,7 @@ import hust.soict.hedspi.aims.media.CompactDisc;
 import hust.soict.hedspi.aims.media.Track;
 import hust.soict.hedspi.aims.store.Store;
 
+import javax.naming.LimitExceededException;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -58,22 +59,41 @@ public class AddTrackToCDScreen extends AddCompactDiscToStoreScreen {
         return center;
     }
 
+    public void deleteTextField() {
+        super.deleteTextField();
+        for (int i = 0; i < numberTracks; i++) {
+            tfTracksName.get(i).setText("");
+            tfTracksLength.get(i).setText("");
+        }
+    }
+
     private class AddCDListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             String trackNameTemp;
             int trackLengthTemp;
             int totalLength = 0;
-            for (int i = 0; i < numberTracks; i++) {
-                trackNameTemp = tfTracksName.get(i).getText();
-                trackLengthTemp = Integer.parseInt(tfTracksLength.get(i).getText());
-                Track trackTemp = new Track(trackNameTemp, trackLengthTemp);
-                tracks.add(trackTemp);
-                totalLength += trackLengthTemp;
+            try {
+                for (int i = 0; i < numberTracks; i++) {
+                    trackNameTemp = tfTracksName.get(i).getText();
+                    trackLengthTemp = Integer.parseInt(tfTracksLength.get(i).getText());
+                    Track trackTemp = new Track(trackNameTemp, trackLengthTemp);
+                    tracks.add(trackTemp);
+                    totalLength += trackLengthTemp;
+                }
+                cd.setLength(totalLength);
+                cd.addTracks(tracks);
             }
-            cd.setLength(totalLength);
-            cd.addTracks(tracks);
-            store.addMedia(cd);
+            catch (NumberFormatException ex) {
+                invalidInput();
+                deleteTextField();
+                return;
+            }
+            try {
+                store.addMedia(cd);
+            } catch (LimitExceededException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Add CD", JOptionPane.ERROR_MESSAGE);
+            }
             StoreMediaDatabase.updateStoreMediaDatabase(store);
             SuccessDialog.SuccessAddedMediaDialog(cd);
             TurnOff.TurnOffAddMediaScreen(AddTrackToCDScreen.this, storeScreenManager);

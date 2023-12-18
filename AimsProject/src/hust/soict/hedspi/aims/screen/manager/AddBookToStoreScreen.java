@@ -4,6 +4,7 @@ import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.store.Store;
 import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 
+import javax.naming.LimitExceededException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -39,20 +40,36 @@ public class AddBookToStoreScreen extends AddItemToStoreScreen {
         return center;
     }
 
+    public void deleteTextField() {
+        super.deleteTextField();
+        tfAuthorName.setText("");
+    }
+
     private class AddBookBtnListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            book = (Book) media;
-            title = tfTitle.getText();
-            category = tfCategory.getText();
-            cost = Float.parseFloat(tfCost.getText());
-            book = new Book(title, category, cost);
-            authorNameTemp = tfAuthorName.getText();
-            String[] authorsName = authorNameTemp.split(",");
-            for (String authorName : authorsName) {
-                book.addAuthor(authorName);
+            try {
+                book = (Book) media;
+                title = tfTitle.getText();
+                category = tfCategory.getText();
+                cost = Float.parseFloat(tfCost.getText());
+                book = new Book(title, category, cost);
+                authorNameTemp = tfAuthorName.getText();
+                String[] authorsName = authorNameTemp.split(",");
+                for (String authorName : authorsName) {
+                    book.addAuthor(authorName);
+                }
             }
-            store.addMedia(book);
+            catch (NumberFormatException ex) {
+                invalidInput();
+                deleteTextField();
+                return;
+            }
+            try {
+                store.addMedia(book);
+            } catch (LimitExceededException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Add Book", JOptionPane.ERROR_MESSAGE);
+            }
             StoreMediaDatabase.updateStoreMediaDatabase(store);
             SuccessDialog.SuccessAddedMediaDialog(book);
             TurnOff.TurnOffAddMediaScreen(AddBookToStoreScreen.this, storeScreenManager);

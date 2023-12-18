@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.screen.customer.controller;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 import javafx.event.ActionEvent;
@@ -47,13 +48,23 @@ public class ItemController {
 
     @FXML
     void btnAddToCartClicked(ActionEvent event) {
-        cart.addMedia(media);
+        try {
+            cart.addMedia(media);
+            JOptionPane.showMessageDialog(null, "The media has been added to the cart", "Add to cart", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Add to cart", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML
-    void btnPlayClicked(ActionEvent event) {
-        String message = ((Playable) media).playMessage();
-        JOptionPane.showMessageDialog(null, message, "Play", JOptionPane.INFORMATION_MESSAGE);
+    void btnPlayClicked(ActionEvent event) throws PlayerException {
+        try {
+            String message = ((Playable) media).playMessage();
+            JOptionPane.showMessageDialog(null, message, "Play", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch (PlayerException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Play", JOptionPane.ERROR_MESSAGE);
+        }
     }
-
 }
