@@ -4,6 +4,7 @@ import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.store.Store;
 
+import javax.naming.LimitExceededException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -53,7 +54,11 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
             director = tfDirector.getText();
             length = Integer.parseInt(tfLength.getText());
             dvd = new DigitalVideoDisc(title, category, director, length, cost);
-            store.addMedia(dvd);
+            try {
+                store.addMedia(dvd);
+            } catch (LimitExceededException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Add DVD", JOptionPane.ERROR_MESSAGE);
+            }
             StoreMediaDatabase.updateStoreMediaDatabase(store);
             SuccessDialog.SuccessAddedMediaDialog(dvd);
             TurnOff.TurnOffAddMediaScreen(AddDigitalVideoDiscToStoreScreen.this, storeScreenManager);

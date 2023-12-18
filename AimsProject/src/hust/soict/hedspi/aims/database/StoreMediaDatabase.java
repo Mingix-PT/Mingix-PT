@@ -3,6 +3,8 @@ package hust.soict.hedspi.aims.database;
 import hust.soict.hedspi.aims.media.*;
 import hust.soict.hedspi.aims.store.Store;
 
+import javax.naming.LimitExceededException;
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -14,7 +16,7 @@ import java.util.Scanner;
 public class StoreMediaDatabase {
 
     private static String fileName = "C:\\Users\\DELL\\IdeaProjects\\OOLT.VN.20231-20215088.LeQuangMinh\\AimsProject\\src\\hust\\soict\\hedspi\\aims\\database\\MediaDatabase.txt";
-    public static Store getStoreMediaDatabase() {
+    public static Store getStoreMediaDatabase() throws LimitExceededException {
         List<Media> mediaList = new ArrayList<Media>();
         File file = new File(fileName);
         try {
@@ -69,8 +71,15 @@ public class StoreMediaDatabase {
             System.out.println("File not found");
         }
         Store store = new Store();
-        for (Media media : mediaList) {
-            store.addMedia(media);
+        try {
+            for (Media media : mediaList) {
+                store.addMedia(media);
+            }
+        }
+        catch (LimitExceededException e) {
+            JOptionPane.showMessageDialog(null, "The number of medias has reached its limit\n" +
+                    "Please check your database", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
         return store;
     }

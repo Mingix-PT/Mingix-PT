@@ -6,12 +6,13 @@ import hust.soict.hedspi.aims.media.*;
 import hust.soict.hedspi.aims.store.Store;
 import hust.soict.hedspi.aims.cart.Cart;
 
+import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class MenuAction {
-    public static void storeMenuAction (Cart cart, Store store) {
+    public static void storeMenuAction (Cart cart, Store store) throws LimitExceededException {
         MenuDisplay.clrscr();
         int choice;
         while (true) {
@@ -125,7 +126,7 @@ public class MenuAction {
         }
     }
 
-    public static void updateStore (Store store) {
+    public static void updateStore (Store store) throws LimitExceededException {
         MenuDisplay.clrscr();
         int choice;
         while (true) {
@@ -166,7 +167,7 @@ public class MenuAction {
         }
     }
 
-    public static void updateStoreAddChoice(Store store) {
+    public static void updateStoreAddChoice(Store store) throws LimitExceededException {
         MenuDisplay.clrscr();
         int choice;
         while (true) {

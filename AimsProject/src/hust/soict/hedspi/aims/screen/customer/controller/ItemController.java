@@ -47,7 +47,13 @@ public class ItemController {
 
     @FXML
     void btnAddToCartClicked(ActionEvent event) {
-        cart.addMedia(media);
+        try {
+            cart.addMedia(media);
+            JOptionPane.showMessageDialog(null, "The media has been added to the cart", "Add to cart", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Add to cart", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML

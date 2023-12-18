@@ -4,6 +4,7 @@ import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.store.Store;
 import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 
+import javax.naming.LimitExceededException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -52,7 +53,11 @@ public class AddBookToStoreScreen extends AddItemToStoreScreen {
             for (String authorName : authorsName) {
                 book.addAuthor(authorName);
             }
-            store.addMedia(book);
+            try {
+                store.addMedia(book);
+            } catch (LimitExceededException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Add Book", JOptionPane.ERROR_MESSAGE);
+            }
             StoreMediaDatabase.updateStoreMediaDatabase(store);
             SuccessDialog.SuccessAddedMediaDialog(book);
             TurnOff.TurnOffAddMediaScreen(AddBookToStoreScreen.this, storeScreenManager);

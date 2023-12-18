@@ -11,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.naming.LimitExceededException;
+
 public class TestViewCartScreen extends Application {
     private static Store store;
     private static Cart cart;
@@ -34,12 +36,19 @@ public class TestViewCartScreen extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LimitExceededException {
         store = StoreMediaDatabase.getStoreMediaDatabase();
         Cart newCart = new Cart();
-        newCart.addMedia(new Book( "The Lion King", "Animation", 19.95f));
-        newCart.addMedia(new Book( "Star Wars", "Science Fiction", 24.95f));
-        newCart.addMedia(new Book( "Aladdin", "Animation", 18.99f));
+        try
+        {
+            newCart.addMedia(new Book("The Lion King", "Animation", 19.95f));
+            newCart.addMedia(new Book("Star Wars", "Science Fiction", 24.95f));
+            newCart.addMedia(new Book("Aladdin", "Animation", 18.99f));
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
         cart = newCart;
         launch(args);
     }

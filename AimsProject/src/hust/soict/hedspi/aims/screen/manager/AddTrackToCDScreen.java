@@ -5,6 +5,7 @@ import hust.soict.hedspi.aims.media.CompactDisc;
 import hust.soict.hedspi.aims.media.Track;
 import hust.soict.hedspi.aims.store.Store;
 
+import javax.naming.LimitExceededException;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -73,7 +74,11 @@ public class AddTrackToCDScreen extends AddCompactDiscToStoreScreen {
             }
             cd.setLength(totalLength);
             cd.addTracks(tracks);
-            store.addMedia(cd);
+            try {
+                store.addMedia(cd);
+            } catch (LimitExceededException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Add CD", JOptionPane.ERROR_MESSAGE);
+            }
             StoreMediaDatabase.updateStoreMediaDatabase(store);
             SuccessDialog.SuccessAddedMediaDialog(cd);
             TurnOff.TurnOffAddMediaScreen(AddTrackToCDScreen.this, storeScreenManager);
