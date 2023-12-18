@@ -30,6 +30,7 @@ public class TestViewStoreScreen extends Application {
 
     public static void main(String[] args) {
         store = StoreMediaDatabase.getStoreMediaDatabase();
+        cart = new Cart();
         launch(args);
     }
 }

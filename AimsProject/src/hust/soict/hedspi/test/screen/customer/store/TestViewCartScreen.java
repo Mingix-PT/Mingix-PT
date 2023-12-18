@@ -1,6 +1,7 @@
 package hust.soict.hedspi.test.screen.customer.store;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.database.StoreMediaDatabase;
 import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.screen.customer.controller.CartController;
 import hust.soict.hedspi.aims.store.Store;
@@ -34,6 +35,7 @@ public class TestViewCartScreen extends Application {
     }
 
     public static void main(String[] args) {
+        store = StoreMediaDatabase.getStoreMediaDatabase();
         Cart newCart = new Cart();
         newCart.addMedia(new Book( "The Lion King", "Animation", 19.95f));
         newCart.addMedia(new Book( "Star Wars", "Science Fiction", 24.95f));

@@ -4,6 +4,8 @@ import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 import hust.soict.hedspi.aims.store.Store;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -17,15 +19,18 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class CartController {
     private Cart cart;
     private Store store;
+    private StringProperty totalCost;
 
     public CartController(Store store, Cart cart) {
         this.store = store;
         this.cart = cart;
+        totalCost = new SimpleStringProperty(cart.totalCost() + "$");
     }
 
     public void initialize() {
@@ -39,6 +44,8 @@ public class CartController {
 
         btnPlay.setVisible(false);
         btnRemove.setVisible(false);
+
+        costLabel.textProperty().bind(totalCost);
 
         tblMedia.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Media>() {
             @Override
@@ -113,19 +120,39 @@ public class CartController {
     private TableView<Media> tblMedia;
 
     @FXML
-    void btnPlayPressed(ActionEvent event) {
+    private Button btnPlaceOrder;
 
+    @FXML
+    void btnPlayPressed(ActionEvent event) {
+        Media media = tblMedia.getSelectionModel().getSelectedItem();
+        String message = ((Playable) media).playMessage();
+        JOptionPane.showMessageDialog(null, message, "Play", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @FXML
     void btnRemovePressed(ActionEvent event) {
         Media selectedMedia = tblMedia.getSelectionModel().getSelectedItem();
         cart.removeMedia(selectedMedia);
+        tblMedia.setItems(cart.getObservableMediaList());
+        totalCost.setValue(cart.totalCost() + "$");
+    }
+
+    @FXML
+    void placeOrder(ActionEvent event) {
+        String confirmMessage = "Do you want to place your order?";
+        String yesMessage = "Your order is placed!";
+        int select = JOptionPane.showConfirmDialog(null, confirmMessage, "Place order", JOptionPane.YES_NO_OPTION);
+        if (select == JOptionPane.YES_OPTION) {
+            cart.emptyCart();
+            totalCost.setValue(cart.totalCost() + "$");
+            tblMedia.setItems(cart.getObservableMediaList());
+            JOptionPane.showMessageDialog(null, yesMessage, "Place order", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     @FXML
     void btnViewStorePressed(ActionEvent event) {
-        final String VIEW_STORE_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/ViewStore.fxml";
+        final String VIEW_STORE_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/Store.fxml";
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource(VIEW_STORE_FXML_FILE_PATH));
