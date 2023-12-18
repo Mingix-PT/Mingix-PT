@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1d3c4382-1916-4838-9e02-c95a87414e7d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/Painter.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/Painter.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/Painter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/Painter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/PainterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hust/soict/hedspi/javafx/PainterController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +39,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "topic/gui-project/init-painter",
+    "git-widget-placeholder": "topic/aims-project/customer",
     "jdk.selected.JAVA_MODULE": "21",
     "last_opened_file_path": "C:/Users/DELL/IdeaProjects/OOLT.VN.20231-20215088.LeQuangMinh/GUIProject",
     "project.structure.last.edited": "Modules",
@@ -86,6 +83,17 @@
       <updated>1701322798463</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
